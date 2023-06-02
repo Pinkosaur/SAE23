@@ -158,3 +158,92 @@ def deleteauteur(request, id):
 def indexauteur(request):
     liste = models.Auteur.objects.all()
     return render(request, "ludotheque/indexauteur.html", {"liste": liste})
+
+
+
+
+# JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR
+
+def traitementjoueur(request):
+    joueurform = JoueurForm(request.POST)
+    if joueurform.is_valid():
+        joueur = joueurform.save()
+        return render(request, "ludotheque/affichejoueur.html", {"joueur": joueur})
+    else:
+        return render(request, "ludotheque/ajoutjoueur.html", {"joueur": joueurform})
+
+def affichejoueur(request, id):
+    joueur = models.Joueur.objects.get(pk=id)
+    return render(request, 'ludotheque/affichejjoueur.html', {'joueur': joueur})
+
+def updatejoueur(request, id):
+    joueur = models.Joueur.objects.get(pk=id)
+    joueurform = JoueurForm(joueur.dic())
+    return render(request, "ludotheque/ajoutupdatejoueur.html/", {"form":joueurform, "id":id})
+
+def updatetraitementjoueur(request, id):
+    joueurform = JoueurForm(request.POST)
+    saveid = id
+    if joueurform.is_valid():
+        joueur = joueurform.save(commit = False)
+        joueur.id = saveid
+        joueur.save()
+        return HttpResponseRedirect("/ludotheque/indexjoueur/")
+    else:
+        return render(request, "ludotheque/ajoutupdatejoueur.html", {"form": joueurform})
+
+def deletejoueur(request, id):
+    suppr = models.Joueur.objects.get(pk=id)
+    suppr.delete()
+    return HttpResponseRedirect("/ludotheque/indexjoueur")
+
+def indexjoueur(request):
+    liste = models.Joueur.objects.all()
+    return render(request, "ludotheque/indexjoueur.html", {"liste": liste})
+
+
+
+
+# COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE COMMENTAIRE
+def traitementcomm(request):
+    commform = CommForm(request.POST)
+    if commform.is_valid():
+        comm = commform.save()
+        return render(request, "ludotheque/affichecomm.html", {"comm": comm})
+    else:
+        return render(request, "ludotheque/ajoutcomm.html", {"comm": commform})
+
+def affichecomm(request, id):
+    comm = models.Comm.objects.get(pk=id)
+    return render(request, 'ludotheque/affichejcomm.html', {'comm': comm})
+
+def updatecomm(request, id):
+    comm = models.Comm.objects.get(pk=id)
+    commform = CommForm(comm.dic())
+    return render(request, "ludotheque/ajoutupdatecomm.html/", {"form":commform, "id":id})
+
+def updatetraitementcomm(request, id):
+    commform = CommForm(request.POST)
+    saveid = id
+    if commform.is_valid():
+        comm = commform.save(commit = False)
+        comm.id = saveid
+        comm.save()
+        return HttpResponseRedirect("/ludotheque/indexcomm/")
+    else:
+        return render(request, "ludotheque/ajoutupdatecomm.html", {"form": commform})
+
+def deletecomm(request, id):
+    suppr = models.Comm.objects.get(pk=id)
+    suppr.delete()
+    return HttpResponseRedirect("/ludotheque/indexcomm")
+
+def indexcomm(request):
+    liste = models.Comm.objects.all()
+    return render(request, "ludotheque/indexcomm.html", {"liste": liste})
+
+
+
+
+
+# LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE
