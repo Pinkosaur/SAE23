@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect
 
 
 
+
+
 # JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU
 
 def ajoutjeu(request):
@@ -61,6 +63,8 @@ def indexjeu(request):
 
 
 
+
+
 # CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE CATEGORIE
 
 def traitementcat(request):
@@ -99,3 +103,58 @@ def deletecat(request, id):
 def indexcat(request):
     liste = models.Cat.objects.all()
     return render(request, "ludotheque/indexcat.html", {"liste": liste})
+
+
+
+
+
+# AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR AUTEUR
+
+def ajoutauteur(request):
+    if request.method == "POST":
+        form = AuteurForm(request)
+        if form.is_valid():
+            auteur = form.save()
+            return render(request, "ludotheque/afficheauteur.html", {"auteur": auteur})
+        else:
+            return render(request, "ludotheque/ajoutauteur.html", {"form": form})
+    else:
+        form = AuteurForm()
+        return render(request, "ludotheque/ajoutauteur.html", {"form": form})
+
+def traitementauteur(request):
+    auteurform = AuteurForm(request.POST)
+    if auteurform.is_valid():
+        auteur = auteurform.save()
+        return render(request, "ludotheque/afficheauteur.html", {"auteur": auteur})
+    else:
+        return render(request, "ludotheque/ajoutauteur.html", {"form": auteurform})
+
+def afficheauteur(request, id):
+    auteur = models.Auteur.objects.get(pk=id)
+    return render(request, 'ludotheque/afficheauteur.html', {'auteur': auteur})
+
+def updateauteur(request, id):
+    auteur = models.Auteur.objects.get(pk=id)
+    auteurform = AuteurForm(auteur.dic())
+    return render(request, "ludotheque/ajoutupdateauteur.html/", {"form":auteurform, "id":id})
+
+def updatetraitementauteur(request, id):
+    auteurform = AuteurForm(request.POST)
+    saveid = id
+    if auteurform.is_valid():
+        auteur = auteurform.save(commit = False)
+        auteur.id = saveid
+        auteur.save()
+        return HttpResponseRedirect("/ludotheque/indexauteur/")
+    else:
+        return render(request, "ludotheque/ajoutupdateauteur.html", {"form": auteurform})
+
+def deleteauteur(request, id):
+    suppr = models.Auteur.objects.get(pk=id)
+    suppr.delete()
+    return HttpResponseRedirect("/ludotheque/indexauteur")
+
+def indexauteur(request):
+    liste = models.Auteur.objects.all()
+    return render(request, "ludotheque/indexauteur.html", {"liste": liste})
