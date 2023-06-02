@@ -32,7 +32,7 @@ class Comm(models.Model): #Commentaires sur les jeux
     idJoueurComm =  Joueur.objects.raw("SELECT id FROM Joueur WHERE Joueur.nomJoueur=Comm.nomJoueurComm")  #à voir/corriger
     noteComm = models.FloatField(blank=False)  # Note attribuée
     contenuComm = models.TextField(null = False, blank = False)
-    dateComm = models.DateField(blank=False, null = False)
+    dateComm = models.DateField(blank=False, null = False) # à changer --> date auto
 
 class Liste(models.Model): #liste personnelle pour chaque joueur contenant ses jeux
     joueurListe = models."???"
