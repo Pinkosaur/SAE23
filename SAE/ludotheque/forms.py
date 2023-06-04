@@ -6,14 +6,15 @@ from . import models
 class JeuForm(ModelForm):
     class Meta:
         model = models.Jeu
-        fields = ("titreJeu", "anneeJeu", "photoJeu", "editeurJeu", "auteurJeu", "categorieJeu")
+        fields = ("titreJeu", "anneeJeu", "photoJeu", "editeurJeu"#, "auteurJeu", "categorieJeu"
+                  )
         labels = {
             'titreJeu': _('Titre du jeu'),
             'anneeJeu': _('Année de parution'),
             'photoJeu': _('Photo de la boîte'),
             'editeurJeu': _('Éditeur'),
-            'auteurJeu': _('Auteur'),
-            'categorieJeu': _('Catégorie')
+#            'auteurJeu': _('Auteur'),
+#            'categorieJeu': _('Catégorie')
         }
 
 class CatForm(ModelForm):
@@ -39,23 +40,30 @@ class AuteurForm(ModelForm):
 class JoueurForm(ModelForm):
     class Meta:
         model = models.Joueur
-        fields = ("nomJoueur", "prenomJoueur", "emailJoueur", "mdpJoueur", "typeJoueur")
+        fields = ("nomJoueur", "prenomJoueur", "emailJoueur", "mdpJoueur"#, "typeJoueur"
+                  )
         labels = {
             'nomJoueur': _('Nom'),
             'prenomJoueur': _('Prénom'),
             'emailJoueur': _('Photo de la boîte'),
             'mdpJoueur': _('Mot de passe'),
-            'typeJoueur': _('Type de joueur'),
+    #        'typeJoueur': _('Type de joueur'),
         }
 
-class CommForm(ModelForm):
+"""class CommForm(ModelForm):
     class Meta:
         model = models.Comm
-        fields = ("jeuComm", "emailJoueurComm", "idJoueurComm", "noteComm", "contenuComm", "dateComm")
+        fields = ("jeuComm", "emailJoueurComm", "noteComm", "contenuComm", "dateComm")
         labels = {
             'jeuComm': _('Titre du jeu'),
             'emailJoueurComm': _('Email'),
             'noteComm': _('Note'),
             'contenuComm': _('Commentaire'),
             'dateComm': _('Date') # à changer --> date auto
-        }
+        }"""
+
+class TrollForm(ModelForm):
+    class Meta:
+        model = models.Troll
+        fields = ('nombre',)
+        labels = {'nombre': _('Entre un nombre entre 1 et 20')}

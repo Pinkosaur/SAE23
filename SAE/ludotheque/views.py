@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import CatForm, JeuForm, AuteurForm, JoueurForm, CommForm#, ListeForm
+from .forms import CatForm, JeuForm, AuteurForm, JoueurForm#, CommForm#, ListeForm
 from . import models
 from django.http import HttpResponseRedirect
 
@@ -258,7 +258,7 @@ def afficheComm(request, id):
 def updateComm(request, id):
     comm = models.Comm.objects.get(pk=id)
     commform = CommForm(comm.dic())
-    return render(request, "ludotheque/ajoutupdatecomm.html/", {"form":commform, "id":id})
+    return render(request, "ludotheque/ajoutupdatecomm.html", {"form":commform, "id":id})
 
 def updatetraitementComm(request, id):
     commform = CommForm(request.POST)
@@ -285,3 +285,264 @@ def indexComm(request):
 
 
 # LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import random
+from .forms import TrollForm
+
+
+def insultes():
+    liste = [
+                "enculé", "fils de pute", "sale merde", "grosse chiasse", "tête de cul", "sale tache",
+                "gros trou du cul", "babos de merde", "mou du gland", "sale rejeton de péripatéticienne",
+                "giga pute", "sale rat", "cave à sperme", "cuve à foutre", "garage à bites",
+                "chiure démoniaque", "tête de con", "bouffon", "lèche boules", "avortement raté",
+                "petit puceau", "branleur de cochons", "grosse chienne", "suceur de troncs",
+                "avaleur de foutre", "tête d'hémorroïde", "fils de nymphomane sadomasochiste pleine d'herpès",
+                "rectum sur pattes", "sale jouet à sodomie", "trousse à bites", "sac à merde", "sale bâtard",
+                "salope", "sale gueux", "l'islamo gauchiste", "raclure", "fils d'inceste"
+    ]
+    return random.choice(liste)
+
+
+def debut_phrase():
+    reponse = ["perdu", "essaye encore", "retente ta chance"]
+    return random.choice(reponse)
+
+
+def troll(request):
+    form = TrollForm()
+    return render(request, "ludotheque/indexx.html", {"form": form})
+
+
+def gigapute(request):
+    return render(request, "ludotheque/inddex.html", {"insulte": insultes(), "debut_phrase": debut_phrase()})

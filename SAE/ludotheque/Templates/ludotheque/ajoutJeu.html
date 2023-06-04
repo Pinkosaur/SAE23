@@ -5,7 +5,7 @@
 <title>Ajout d'un jeu</title>
 </head>
 <body>
-<form method="post" action="/ludothqeue/traitementJeu">
+<form method="post" action="/ludothqeue/traitementJeu/">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
