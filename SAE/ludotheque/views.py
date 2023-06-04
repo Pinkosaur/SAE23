@@ -541,8 +541,8 @@ def debut_phrase():
 
 def troll(request):
     form = TrollForm()
-    return render(request, "ludotheque/indexx.html", {"form": form})
+    return render(request, "ludotheque/index2.html", {"form": form})
 
 
 def gigapute(request):
-    return render(request, "ludotheque/inddex.html", {"insulte": insultes(), "debut_phrase": debut_phrase()})
+    return render(request, "ludotheque/index3.html", {"insulte": insultes(), "debut_phrase": debut_phrase()})
