@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des jeux</title>
+</head>
+<body>
+<a href="../ajoutJeu/">Ajouter un jeu</a>
+<ul>
+    {% for l in liste %}
+    <li> jeu {{l.id}} : {{l}}
+    <a href="/ludotheque/afficheJeu/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateJeu/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteJeu/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

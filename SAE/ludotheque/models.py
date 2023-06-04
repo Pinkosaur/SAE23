@@ -10,8 +10,8 @@ class Jeu(models.Model):
     anneeJeu = models.DateField()
     photoJeu = models.ImageField() #Peut être à compléter avec (upload_to="...")
     editeurJeu = models.CharField(max_length=50)
-    auteurJeu = # ID auteur
-    categorieJeu = # ID cat jeu
+#    auteurJeu = # ID auteur
+#    categorieJeu = # ID cat jeu
 
 class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
@@ -34,6 +34,6 @@ class Comm(models.Model): #Commentaires sur les jeux
     contenuComm = models.TextField(null = False, blank = False)
     dateComm = models.DateField(blank=False, null = False) # à changer --> date auto
 
-class Liste(models.Model): #liste personnelle pour chaque joueur contenant ses jeux
-    joueurListe = models."???"
-    jeuxListe = models."???"
+#class Liste(models.Model): #liste personnelle pour chaque joueur contenant ses jeux
+#    joueurListe = models."???"
+#    jeuxListe = models."???"

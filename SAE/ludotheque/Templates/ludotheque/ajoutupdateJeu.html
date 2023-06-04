@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ajout</title>
+</head>
+<body>
+<form method="post" action="/ludotheque/updatetraitementJeu/{{id}}/">
+{% csrf_token %}
+{{ form.as_ul }}
+<input type="submit" value="envoyer les données"/>
+</form>
+<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+</body>
+</html>
