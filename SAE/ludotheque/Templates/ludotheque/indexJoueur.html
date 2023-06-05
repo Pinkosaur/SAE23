@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des joueurs</title>
+</head>
+<body>
+<a href="../ajoutJoueur/">Ajouter un joueur</a>
+<ul>
+    {% for l in liste %}
+    <li> joueur {{l.id}} : {{l.prenomJoueur}} {{l.nomJoueur}}
+    <a href="/ludotheque/afficheJoueur/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateJoueur/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteJoueur/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+</body>
+</html>

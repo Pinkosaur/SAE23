@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des auteurs</title>
+</head>
+<body>
+<a href="../ajoutAuteur/">Ajouter un auteur</a>
+<ul>
+    {% for l in liste %}
+    <li> auteur {{l.id}} : {{l.prenomAuteur}} {{l.nomAuteur}}
+    <a href="/ludotheque/afficheAuteur/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateAuteur/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteAuteur/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des catégories</title>
+</head>
+<body>
+<a href="../ajoutCat/">Ajouter une catégorie</a>
+<ul>
+    {% for l in liste %}
+    <li> cat {{l.id}} : {{l.nomCat}}
+    <a href="/ludotheque/afficheCat/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateCat/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteCat/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+</body>
+</html>

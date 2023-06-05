@@ -20,7 +20,7 @@ class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
     prenomAuteur = models.CharField(max_length=25)
     ageAuteur = models.IntegerField(blank=True, null=True)
-    photoAuteur = models.ImageField()  #Peut être à compléter avec (upload_to="...")
+    photoAuteur = models.ImageField(blank=True, null=True)  #Peut être à compléter avec (upload_to="...")
 
 class Joueur(models.Model):
     nomJoueur = models.CharField(max_length=25)

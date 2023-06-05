@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Commentaires</title>
+</head>
+<body>
+<a href="../ajoutComm/">Ajouter un commentaire</a>
+<ul>
+    {% for l in liste %}
+    <li> commentaire {{l.id}} : {{l.noteComm}}/10
+    <a href="/ludotheque/afficheComm/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateComm/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteComm/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+</body>
+</html>

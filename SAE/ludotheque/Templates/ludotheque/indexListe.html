@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listes personnelles des joueurs</title>
+</head>
+<body>
+<a href="../ajoutListe/">Ajouter la liste j'un joueur</a>
+<ul>
+    {% for l in liste %}
+    <li> liste de {{l.prenomJoueur}} {{l.nomJoueur}}
+    <a href="/ludotheque/afficheListe/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateListe/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteListe/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+</body>
+</html>
