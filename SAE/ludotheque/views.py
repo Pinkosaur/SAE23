@@ -48,14 +48,14 @@ def updatetraitementJeu(request, id):
         jeu = jeuform.save(commit = False)
         jeu.id = saveid
         jeu.save()
-        return HttpResponseRedirect("/ludotheque/indexjeu/")
+        return HttpResponseRedirect("/ludotheque/indexJeu/")
     else:
         return render(request, "ludotheque/ajoutupdateJeu.html", {"form": jeuform})
 
 def deleteJeu(request, id):
     suppr = models.Jeu.objects.get(pk=id)
     suppr.delete()
-    return HttpResponseRedirect("/ludotheque/indexjeu")
+    return HttpResponseRedirect("/ludotheque/indexJeu")
 
 def indexJeu(request):
     liste = models.Jeu.objects.all()

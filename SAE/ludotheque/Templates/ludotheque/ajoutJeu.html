@@ -5,11 +5,12 @@
 <title>Ajout d'un jeu</title>
 </head>
 <body>
-<form method="post" action="/ludothqeue/traitementJeu/">
+<form method="post" action="/ludotheque/traitementJeu">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
 </form>
-<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
+<p><a href="/ludotheque/indexJeu/">Retour à la page des jeux</a></p>
+<p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
 </body>
 </html>

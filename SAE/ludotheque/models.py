@@ -7,11 +7,14 @@ class Cat(models.Model): #Catégorie de jeux
 
 class Jeu(models.Model):
     titreJeu = models.CharField(max_length=50)
-    anneeJeu = models.DateField()
+    anneeJeu = models.IntegerField()
     photoJeu = models.ImageField(blank=True) #Peut être à compléter avec (upload_to="...")
     editeurJeu = models.CharField(max_length=50)
 #    auteurJeu = # ID auteur
 #    categorieJeu = # ID cat jeu
+    def dic(self):
+        return {"titreJeu": self.titreJeu, "anneeJeu": self.anneeJeu, "photoJeu": self.photoJeu, "editeurJeu": self.editeurJeu,
+                }
 
 class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
