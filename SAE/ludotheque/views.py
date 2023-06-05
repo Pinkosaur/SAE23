@@ -105,14 +105,14 @@ def updatetraitementCat(request, id):
         cat = catform.save(commit = False)
         cat.id = saveid
         cat.save()
-        return HttpResponseRedirect("/ludotheque/indexcat/")
+        return HttpResponseRedirect("/ludotheque/indexCat/")
     else:
         return render(request, "ludotheque/ajoutupdatecat.html", {"form": catform})
 
 def deleteCat(request, id):
     suppr = models.Cat.objects.get(pk=id)
     suppr.delete()
-    return HttpResponseRedirect("/ludotheque/indexcat")
+    return HttpResponseRedirect("/ludotheque/indexCat")
 
 def indexCat(request):
     liste = models.Cat.objects.all()

@@ -4,6 +4,8 @@ from django.db import models
 class Cat(models.Model): #Catégorie de jeux
     nomCat = models.CharField(max_length=100)
     descriptifCat = models.TextField(null = False, blank = True)
+    def dic(self):
+        return {"nomCat": self.nomCat, "descriptifCat": self.descriptifCat}
 
 class Jeu(models.Model):
     titreJeu = models.CharField(max_length=50)

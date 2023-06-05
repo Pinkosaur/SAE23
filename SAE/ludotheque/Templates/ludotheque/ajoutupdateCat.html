@@ -5,12 +5,12 @@
 <title>Update</title>
 </head>
 <body>
-<form method="post" action="/ludotheque/updatetraitementJeu/{{id}}/">
+<form method="post" action="/ludotheque/updatetraitementCat/{{id}}/">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
 </form>
-<p><a href="/ludotheque/indexJeu/">Retour à la page des jeux</a></p>
+<p><a href="/ludotheque/indexCat/">Retour à la page des catégories</a></p>
 <p><a href="/ludotheque/index/">Retourner à la page d'accueil</a></p>
 </body>
 </html>
