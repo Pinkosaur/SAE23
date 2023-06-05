@@ -6,7 +6,7 @@ urlpatterns = [
     path('index/', views.index),
 
     path('ajoutJeu/', views.ajoutJeu),
-    path('traitementJeu/', views.traitementJeu),
+    path('traitementJeu', views.traitementJeu),
     path('afficheJeu/<int:id>/', views.afficheJeu),
     path('updateJeu/<int:id>/', views.updateJeu),
     path('updatetraitementJeu/<int:id>/', views.updatetraitementJeu),
