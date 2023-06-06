@@ -39,7 +39,7 @@ def afficheJeu(request, id):
 def updateJeu(request, id):
     jeu = models.Jeu.objects.get(pk=id)
     jeuform = JeuForm(jeu.dic())
-    return render(request, "ludotheque/ajoutupdateJeu.html/", {"form":jeuform, "id":id})
+    return render(request, "ludotheque/updateJeu.html/", {"form":jeuform, "id":id})
 
 def updatetraitementJeu(request, id):
     jeuform = JeuForm(request.POST)
@@ -50,7 +50,7 @@ def updatetraitementJeu(request, id):
         jeu.save()
         return HttpResponseRedirect("/ludotheque/indexJeu/")
     else:
-        return render(request, "ludotheque/ajoutupdateJeu.html", {"form": jeuform})
+        return render(request, "ludotheque/updateJeu.html", {"form": jeuform})
 
 def deleteJeu(request, id):
     suppr = models.Jeu.objects.get(pk=id)
@@ -151,7 +151,7 @@ def afficheAuteur(request, id):
 def updateAuteur(request, id):
     auteur = models.Auteur.objects.get(pk=id)
     auteurform = AuteurForm(auteur.dic())
-    return render(request, "ludotheque/ajoutupdateAuteur.html/", {"form":auteurform, "id":id})
+    return render(request, "ludotheque/updateAuteur.html/", {"form":auteurform, "id":id})
 
 def updatetraitementAuteur(request, id):
     auteurform = AuteurForm(request.POST)
@@ -162,7 +162,7 @@ def updatetraitementAuteur(request, id):
         auteur.save()
         return HttpResponseRedirect("/ludotheque/indexAuteur/")
     else:
-        return render(request, "ludotheque/ajoutupdateAuteur.html", {"form": auteurform})
+        return render(request, "ludotheque/updateAuteur.html", {"form": auteurform})
 
 def deleteAuteur(request, id):
     suppr = models.Auteur.objects.get(pk=id)

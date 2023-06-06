@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>update</title>
+<meta charset="UTF-8">
+<title>Update</title>
 </head>
 <body>
-<form method="post" action="/ludotheque/updateAuteur/{{auteur.id}}/">
+<form method="post" action="/ludotheque/updatetraitementAuteur/{{id}}/">
 {% csrf_token %}
 {{ form.as_ul }}
-<input type="submit" value="envoyer les données">
+<input type="submit" value="envoyer les données"/>
 </form>
 <p><a href="/ludotheque/indexAuteur/">Retour à la page des auteurs</a></p>
-<p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
+<p><a href="/ludotheque/index/">Retourner à la page d'accueil</a></p>
 </body>
 </html>
