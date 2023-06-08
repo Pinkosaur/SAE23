@@ -4,8 +4,6 @@ from django.db import models
 class Cat(models.Model): #Catégorie de jeux
     nomCat = models.CharField(max_length=100)
     descriptifCat = models.TextField(null = False, blank = True)
-    def dic(self):
-        return {"nomCat": self.nomCat, "descriptifCat": self.descriptifCat}
 
 class Jeu(models.Model):
     titreJeu = models.CharField(max_length=50)
@@ -22,17 +20,14 @@ class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
     prenomAuteur = models.CharField(max_length=25)
     ageAuteur = models.IntegerField(blank=True, null=True)
-    photoAuteur = models.ImageField(blank=True, null=True)  #Peut être à compléter avec (upload_to="...")
-    def dic(self):
-        return {"nomAuteur": self.nomAuteur, "prenomAuteur": self.prenomAuteur, "ageAuteur": self.ageAuteur, "photoAuteur": self.photoAuteur,
-                }
+    photoAuteur = models.ImageField()  #Peut être à compléter avec (upload_to="...")
 
 class Joueur(models.Model):
     nomJoueur = models.CharField(max_length=25)
     prenomJoueur = models.CharField(max_length=25)
     emailJoueur = models.EmailField(blank=False, null=False)
     mdpJoueur = models.CharField(max_length=30)
-    """PARTICULIER = "0"
+"""    PARTICULIER = "0"
     PROFESSIONNEL = "1"
     TYPE = [
         (PARTICULIER, "Particulier"),
@@ -42,16 +37,10 @@ class Joueur(models.Model):
         choices = TYPE,
         default=PARTICULIER,
     )"""
-    def dic(self):
-        return {"nomJoueur": self.nomJoueur, "prenomJoueur": self.prenomJoueur, "emailJoueur": self.emailJoueur,
-                "mdpJoueur": self.mdpJoueur,
-                }
 
-
-
-"""class Comm(models.Model): #Commentaires sur les jeux
+"""class Comm(models.Model): #commentaires sur les jeux
     jeuComm = models.CharField(max_length=50)  #Jeu commenté
-#    emailJoueurComm = models.CharField(choices=Joueur.emailJoueur)  # Joueur qui commente / à modifier, pour associer à l'ID et pas au nom
+    emailJoueurComm = models.CharField(choices=Joueur.emailJoueur)  # Joueur qui commente / à modifier, pour associer à l'ID et pas au nom
 #    idJoueurComm =  Joueur.objects.raw("SELECT id FROM Joueur WHERE Joueur.nomJoueur=Comm.nomJoueurComm")  #à voir/corriger
     noteComm = models.FloatField(blank=False)  # Note attribuée
     contenuComm = models.TextField(null = False, blank = False)
