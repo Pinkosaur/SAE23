@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import CatForm, JeuForm, AuteurForm, JoueurForm#, CommForm#, ListeForm
+# from .forms import CatForm, JeuForm, AuteurForm, JoueurForm, CommForm#, ListeForm
 from . import models
 from django.http import HttpResponseRedirect
 
@@ -8,21 +8,13 @@ from django.http import HttpResponseRedirect
 def index(request):
     return render(request, "ludotheque/index.html")
 
-
+"""
 
 # JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU JEU
 
 def ajoutJeu(request):
-    if request.method == "POST":
-        form = JeuForm(request)
-        if form.is_valid():
-            jeu = form.save()
-            return render(request, "ludotheque/jeux/afficheJeu.html", {"jeu": jeu})
-        else:
-            return render(request, "ludotheque/jeux/ajoutJeu.html", {"form": form})
-    else:
-        form = JeuForm()
-        return render(request, "ludotheque/jeux/ajoutJeu.html", {"form": form})
+    form = JeuForm()
+    return render(request, "ludotheque/jeux/ajoutJeu.html", {"form": form})
 
 def traitementJeu(request):
     jeuform = JeuForm(request.POST)
@@ -91,7 +83,7 @@ def traitementCat(request):
 
 def afficheCat(request, id):
     cat = models.Cat.objects.get(pk=id)
-    return render(request, 'ludotheque/categories/affichejcat.html', {'cat': cat})
+    return render(request, 'ludotheque/categories/affichecat.html', {'cat': cat})
 
 def updateCat(request, id):
     cat = models.Cat.objects.get(pk=id)
@@ -179,33 +171,25 @@ def indexAuteur(request):
 # JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR JOUEUR
 
 def ajoutJoueur(request):
-    if request.method == "POST":
-        form = JoueurForm(request)
-        if form.is_valid():
-            joueur = form.save()
-            return render(request, "ludotheque/joueurs/afficheJoueur.html", {"joueur": joueur})
-        else:
-            return render(request, "ludotheque/joueurs/ajoutJoueur.html", {"form": form})
-    else:
-        form = JoueurForm()
-        return render(request, "ludotheque/joueurs/ajoutJoueur.html", {"form": form})
+    jform = JoueurForm()
+    return render(request, "ludotheque/joueurs/ajoutJoueur.html", {"form": jform})
 
 def traitementJoueur(request):
     joueurform = JoueurForm(request.POST)
     if joueurform.is_valid():
         joueur = joueurform.save()
-        return render(request, "ludotheque/joueurs/affichejoueur.html", {"joueur": joueur})
+        return render(request, "ludotheque/joueurs/afficheJoueur.html", {"joueur": joueur})
     else:
-        return render(request, "ludotheque/joueurs/ajoutjoueur.html", {"joueur": joueurform})
+        return render(request, "ludotheque/joueurs/ajoutJoueur.html", {"joueur": joueurform})
 
 def afficheJoueur(request, id):
     joueur = models.Joueur.objects.get(pk=id)
-    return render(request, 'ludotheque/joueurs/affichejjoueur.html', {'joueur': joueur})
+    return render(request, 'ludotheque/joueurs/afficheJoueur.html', {'joueur': joueur})
 
 def updateJoueur(request, id):
     joueur = models.Joueur.objects.get(pk=id)
     joueurform = JoueurForm(joueur.dic())
-    return render(request, "ludotheque/joueurs/ajoutupdatejoueur.html/", {"form":joueurform, "id":id})
+    return render(request, "ludotheque/joueurs/ajoutupdateJoueur.html/", {"form":joueurform, "id":id})
 
 def updatetraitementJoueur(request, id):
     joueurform = JoueurForm(request.POST)
@@ -214,18 +198,18 @@ def updatetraitementJoueur(request, id):
         joueur = joueurform.save(commit = False)
         joueur.id = saveid
         joueur.save()
-        return HttpResponseRedirect("/ludotheque/indexjoueur/")
+        return HttpResponseRedirect("/ludotheque/indexJoueur/")
     else:
-        return render(request, "ludotheque/joueurs/ajoutupdatejoueur.html", {"form": joueurform})
+        return render(request, "ludotheque/joueurs/ajoutupdateJoueur.html", {"form": joueurform})
 
 def deleteJoueur(request, id):
     suppr = models.Joueur.objects.get(pk=id)
     suppr.delete()
-    return HttpResponseRedirect("/ludotheque/indexjoueur")
+    return HttpResponseRedirect("/ludotheque/indexJoueur")
 
 def indexJoueur(request):
     liste = models.Joueur.objects.all()
-    return render(request, "ludotheque/indexjoueur.html", {"liste": liste})
+    return render(request, "ludotheque/joueurs/indexJoueur.html", {"liste": liste})
 
 
 
@@ -282,267 +266,6 @@ def indexComm(request):
 
 
 
-
+"""
 
 # LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE LISTE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import random
-from .forms import TrollForm
-
-
-def insultes():
-    liste = [
-                "enculé", "fils de pute", "sale merde", "grosse chiasse", "tête de cul", "sale tache",
-                "gros trou du cul", "babos de merde", "mou du gland", "sale rejeton de péripatéticienne",
-                "giga pute", "sale rat", "cave à sperme", "cuve à foutre", "garage à bites",
-                "chiure démoniaque", "tête de con", "bouffon", "lèche boules", "avortement raté",
-                "petit puceau", "branleur de cochons", "grosse chienne", "suceur de troncs",
-                "avaleur de foutre", "tête d'hémorroïde", "fils de nymphomane sadomasochiste pleine d'herpès",
-                "rectum sur pattes", "sale jouet à sodomie", "trousse à bites", "sac à merde", "sale bâtard",
-                "salope", "sale gueux", "l'islamo gauchiste", "raclure", "fils d'inceste"
-    ]
-    return random.choice(liste)
-
-
-def debut_phrase():
-    reponse = ["perdu", "essaye encore", "retente ta chance"]
-    return random.choice(reponse)
-
-
-def troll(request):
-    form = TrollForm()
-    return render(request, "ludotheque/index2.html", {"form": form})
-
-
-def gigapute(request):
-    return render(request, "ludotheque/index3.html", {"insulte": insultes(), "debut_phrase": debut_phrase()})

@@ -1,9 +1,7 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des catégories</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Liste des catégories{% endblock %}
+{% block content %}
 <a href="../ajoutCat/">Ajouter une catégorie</a>
 <ul>
     {% for l in liste %}
@@ -14,6 +12,4 @@
     </li>
     {% endfor %}
 </ul>
-<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
-</body>
-</html>
+{% endblock %}

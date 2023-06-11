@@ -6,15 +6,15 @@ from . import models
 class JeuForm(ModelForm):
     class Meta:
         model = models.Jeu
-        fields = ("titreJeu", "anneeJeu", "photoJeu", "editeurJeu"#, "auteurJeu", "categorieJeu"
+        fields = ("titreJeu", "anneeJeu", "photoJeu", "editeurJeu", "auteurJeu", "categorieJeu"
                   )
         labels = {
             'titreJeu': _('Titre du jeu'),
             'anneeJeu': _('Année de parution'),
             'photoJeu': _('Photo de la boîte'),
             'editeurJeu': _('Éditeur'),
-#            'auteurJeu': _('Auteur'),
-#            'categorieJeu': _('Catégorie')
+            'auteurJeu': _('Auteur'),
+            'categorieJeu': _('Catégorie')
         }
 
 class CatForm(ModelForm):
@@ -40,30 +40,38 @@ class AuteurForm(ModelForm):
 class JoueurForm(ModelForm):
     class Meta:
         model = models.Joueur
-        fields = ("nomJoueur", "prenomJoueur", "emailJoueur", "mdpJoueur"#, "typeJoueur"
+        fields = ("nomJoueur", "prenomJoueur", "emailJoueur", "mdpJoueur", "typeJoueur"
                   )
         labels = {
             'nomJoueur': _('Nom'),
             'prenomJoueur': _('Prénom'),
-            'emailJoueur': _('Photo de la boîte'),
+            'emailJoueur': _('Email'),
             'mdpJoueur': _('Mot de passe'),
-    #        'typeJoueur': _('Type de joueur'),
+            'typeJoueur': _('Type de joueur'),
         }
 
-"""class CommForm(ModelForm):
+class CommForm_depuisjoueur(ModelForm):
     class Meta:
         model = models.Comm
-        fields = ("jeuComm", "emailJoueurComm", "noteComm", "contenuComm", "dateComm")
+        fields = ("jeuComm", "noteComm", "contenuComm")
         labels = {
             'jeuComm': _('Titre du jeu'),
-            'emailJoueurComm': _('Email'),
             'noteComm': _('Note'),
             'contenuComm': _('Commentaire'),
-            'dateComm': _('Date') # à changer --> date auto
-        }"""
+        }
 
-class TrollForm(ModelForm):
+class CommForm_depuisjeu(ModelForm):
     class Meta:
-        model = models.Troll
-        fields = ('nombre',)
-        labels = {'nombre': _('Entre un nombre entre 1 et 20')}
+        model = models.Comm
+        fields = ("joueurComm", "noteComm", "contenuComm")
+        labels = {
+            'joueurComm': _('Joueur commentant ce jeu'),
+            'noteComm': _('Note'),
+            'contenuComm': _('Commentaire'),
+        }
+
+class ListeForm(ModelForm):
+    class Meta:
+        model = models.Liste
+        fields = ('jeuListe',)
+        labels = {'jeuListe': _('Choisir un jeu')}

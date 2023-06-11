@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des jeux</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Liste des jeux{% endblock %}
+{% block content %}
 <a href="../ajoutJeu/">Ajouter un jeu</a>
 <ul>
     {% for l in liste %}
     <li> jeu {{l.id}} : {{l.titreJeu}}
     <a href="/ludotheque/afficheJeu/{{l.id}}/"> Afficher</a> -
     <a href="/ludotheque/updateJeu/{{l.id}}/"> Mettre à jour</a> -
-    <a href="/ludotheque/deleteJeu/{{l.id}}/"> Supprimer</a>
+    <a href="/ludotheque/deleteJeu/{{l.id}}/"> Supprimer</a>  -
+        <a href="/ludotheque/ajoutComm_jeu/{{l.id}}/"> Commenter</a> -
     </li>
     {% endfor %}
 </ul>
-<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
-</body>
-</html>
+{% endblock %}

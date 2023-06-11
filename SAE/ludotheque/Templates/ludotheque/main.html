@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
 {% load static %}
+<head>
     <meta charset="UTF-8">
-    <title>Ludothèque</title>
+    <title>{% block title %}Titre{% endblock %}</title>
    <link href="https://fonts.google" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
     <nav>
       <ul>
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Jeux</a></li>
-        <li><a href="#">Usager</a></li>
-        <li><a href="#">Commentaire</a></li>
+        <li><a href="/ludotheque/index/">Accueil</a></li>
+        <li><a href="/ludotheque/indexJeu/">Jeux</a></li>
+        <li><a href="/ludotheque/indexCat/">Catégories</a></li>
+        <li><a href="/ludotheque/indexJoueur/">Joueurs</a></li>
+        <li><a href="/ludotheque/indexAuteur/">Auteurs</a></li>
       </ul>
-
+    </nav>
+<div>
+    {% block content %}
+        <h1> bloc principal</h1>
+    {% endblock %}
+</div>
 </body>
 </html>

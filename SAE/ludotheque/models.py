@@ -1,17 +1,23 @@
 from django.db import models
+import django.utils.timezone
 
 # Create your models here.
 class Cat(models.Model): #Catégorie de jeux
     nomCat = models.CharField(max_length=100)
     descriptifCat = models.TextField(null = False, blank = True)
+    def __str__(self):
+        chaine = f"{self.nomCat}"
+        return chaine
+    def dic(self):
+        return {"nomCat": self.nomCat, "descriptifCat": self.descriptifCat}
 
 class Jeu(models.Model):
     titreJeu = models.CharField(max_length=50)
     anneeJeu = models.IntegerField()
     photoJeu = models.ImageField(blank=True) #Peut être à compléter avec (upload_to="...")
     editeurJeu = models.CharField(max_length=50)
-#    auteurJeu = # ID auteur
-#    categorieJeu = # ID cat jeu
+    auteurJeu = models.ForeignKey("Auteur", on_delete=models.CASCADE, default=None)
+    categorieJeu = models.ForeignKey("Cat", on_delete=models.CASCADE, default=None)
     def dic(self):
         return {"titreJeu": self.titreJeu, "anneeJeu": self.anneeJeu, "photoJeu": self.photoJeu, "editeurJeu": self.editeurJeu,
                 }
@@ -20,35 +26,45 @@ class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
     prenomAuteur = models.CharField(max_length=25)
     ageAuteur = models.IntegerField(blank=True, null=True)
-    photoAuteur = models.ImageField()  #Peut être à compléter avec (upload_to="...")
+    photoAuteur = models.ImageField(blank=True, null=True)  #Peut être à compléter avec (upload_to="...")
+    def __str__(self):
+        chaine = f"{self.prenomAuteur} {self.nomAuteur}"
+        return chaine
+    def dic(self):
+        return {"nomAuteur": self.nomAuteur, "prenomAuteur": self.prenomAuteur, "ageAuteur": self.ageAuteur, "photoAuteur": self.photoAuteur,
+                }
+
+
+TYPE = (
+        ("Particulier", "Particulier"),
+        ("Professionnel", "Professionnel")
+        )
 
 class Joueur(models.Model):
     nomJoueur = models.CharField(max_length=25)
     prenomJoueur = models.CharField(max_length=25)
-    emailJoueur = models.EmailField(blank=False, null=False)
+    emailJoueur = models.EmailField(blank=False, null=False, default="test@test.test")
     mdpJoueur = models.CharField(max_length=30)
-"""    PARTICULIER = "0"
-    PROFESSIONNEL = "1"
-    TYPE = [
-        (PARTICULIER, "Particulier"),
-        (PROFESSIONNEL, "Professionnel"),
-    ]
-    typeJoueur = models.CharField(
-        choices = TYPE,
-        default=PARTICULIER,
-    )"""
+    typeJoueur = models.CharField(max_length=30, choices=TYPE, default="Particulier")
 
-"""class Comm(models.Model): #commentaires sur les jeux
-    jeuComm = models.CharField(max_length=50)  #Jeu commenté
-    emailJoueurComm = models.CharField(choices=Joueur.emailJoueur)  # Joueur qui commente / à modifier, pour associer à l'ID et pas au nom
-#    idJoueurComm =  Joueur.objects.raw("SELECT id FROM Joueur WHERE Joueur.nomJoueur=Comm.nomJoueurComm")  #à voir/corriger
+    def dic(self):
+        return {"nomJoueur": self.nomJoueur, "prenomJoueur": self.prenomJoueur, "emailJoueur": self.emailJoueur,
+                "mdpJoueur": self.mdpJoueur,
+                }
+
+
+
+class Comm(models.Model): #Commentaires sur les jeux
+    jeuComm = models.ForeignKey("jeu", on_delete=models.CASCADE)  #Jeu commenté
+    joueurComm = models.ForeignKey("joueur", on_delete=models.CASCADE)
     noteComm = models.FloatField(blank=False)  # Note attribuée
     contenuComm = models.TextField(null = False, blank = False)
-    dateComm = models.DateField(blank=False, null = False) # à changer --> date auto
-"""
-#class Liste(models.Model): #liste personnelle pour chaque joueur contenant ses jeux
-#    joueurListe = models."???"
-#    jeuxListe = models."???"
+    dateComm = django.utils.timezone.now() # à changer --> date auto
+
+
+class Liste(models.Model):
+    joueurListe = models.ForeignKey("joueur", on_delete=models.CASCADE)
+    jeuListe = models.ForeignKey("jeu", on_delete=models.CASCADE)
 
 class Troll(models.Model):
     nombre = models.IntegerField(blank=False, null=False)
