@@ -1,8 +1,8 @@
-#nav {
+nav {
     float: left;
 }
 
-#nav a {
+nav a {
     display: block;
     color: blue;
     text-align: center;
@@ -11,19 +11,25 @@
     font-family:
 }
 
-#nav a:hover {
+nav a:hover {
     background-color: #111;
 }
 
  body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: red;
 }
 
-#fond{
-    background-color : #254, 231, 240 ;
 
-#ul{
+ul{
    background-color : #255, 0, 0 ;
 
+#logo{
+   font-family:
+   font-weight:
+   float: left;
+}
 
+li {
+   list-style-type:none
+}

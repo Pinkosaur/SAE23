@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Titre{% endblock %}</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="{%static 'ludotheque/main.css'%}">
 </head>
 <body>
     <nav>
       <ul>
+        <li id="logo"> <a href="'#">Notre Ludothèque</a></li>
         <li><a href="/ludotheque/index/">Accueil</a></li>
         <li><a href="/ludotheque/indexJeu/">Jeux</a></li>
         <li><a href="/ludotheque/indexCat/">Catégories</a></li>
