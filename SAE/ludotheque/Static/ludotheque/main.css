@@ -2,6 +2,12 @@ nav {
     float: left;
 }
 
+section{
+    display: block;
+    margin: 3%;
+    text-align: center;
+}
+
 nav a {
     display: block;
     color: blue;
@@ -17,7 +23,7 @@ nav a:hover {
 
  body {
     font-family: Arial, sans-serif;
-    background-color: red;
+    background-color: rgb(116, 208, 241);
 }
 
 
