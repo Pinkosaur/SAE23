@@ -3,9 +3,7 @@
 {% block title %}
 Ajout
 {% endblock %}
-{% block subtitle %}
-Ajout d'un membre du personnel
-{% endblock %}
+
 {% block content %}
 <form method="post" action="/ludotheque/traitementListe/{{id}}/">
 {% csrf_token %}

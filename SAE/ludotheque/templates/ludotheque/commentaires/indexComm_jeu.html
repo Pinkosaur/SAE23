@@ -1,9 +1,8 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Commentaires</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Commentaires{% endblock %}
+{% block content %}
+
 <a href="/ludotheque/ajoutComm_jeu/{{idjeu}}/">Ajouter un commentaire</a>
 <ul>
     {% for l in liste %}
@@ -13,8 +12,5 @@
     <a href="/ludotheque/deleteComm/{{l.id}}/"> Supprimer</a>
     </li>
     {% endfor %}
-
 </ul>
-<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
-</body>
-</html>
+{% endblock %}

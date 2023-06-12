@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Ajout d'un commentaire</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Ajout d'un commentaire{% endblock %}
+{% block content %}
 <form method="post" action="/ludotheque/traitementComm_joueur/{{idjoueur}}/">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
 </form>
 <p><a href="/ludotheque/indexComm_joueur/{{idjoueur}}">Retour à la page des commentaires</a></p>
-<p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}

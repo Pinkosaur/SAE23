@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Update</title>
-</head>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Update{% endblock %}
+{% block content %}
 <body>
 <form method="post" action="/ludotheque/updatetraitementComm_jeu/{{id}}/">
 {% csrf_token %}
@@ -11,6 +9,4 @@
 <input type="submit" value="envoyer les données"/>
 </form>
 <p><a href="/ludotheque/indexJeu/">Retour à la page des jeux</a></p>
-<p><a href="/ludotheque/index/">Retourner à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}
