@@ -1,5 +1,11 @@
 nav {
     float: left;
+    border-radius: 20px;
+    border-color: rgb(255, 240, 188);
+    border-style: solid;
+    overflow: hidden;
+    width: 100%;
+    background-color: rgb();
 }
 
 section{
@@ -14,28 +20,40 @@ nav a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-family:
+    font-family: sans-serif;
 }
 
 nav a:hover {
-    background-color: #111;
+    background-color: rgb(255, 240, 188);
+    font-family: sans-serif;
 }
 
- body {
+body {
     font-family: Arial, sans-serif;
     background-color: rgb(116, 208, 241);
 }
 
 
 ul{
-   background-color : #255, 0, 0 ;
+   background-color : rgb(255, 127, 0);
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
 
-#logo{
-   font-family:
-   font-weight:
-   float: left;
+
 }
 
-li {
-   list-style-type:none
+
+h1 {
+    text-align: center;
 }
+
+h2 {
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 50 px;
+}
+
+
+
