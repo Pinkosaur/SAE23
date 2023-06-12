@@ -32,13 +32,15 @@ def updateListe(request, id):
     return render(request, "ludotheque/listes/updateliste.html/", {"form":aform, "id":id, "liste":liste})
 
 def updatetraitementListe(request, id):
+    l=models.Liste.objects.get(pk=id).joueurListe_id
     listeform = ListeForm(request.POST)
     saveid = id
     if listeform.is_valid():
         liste = listeform.save(commit = False)
         liste.id = saveid
+        liste.joueurListe_id = l
         liste.save()
-        return HttpResponseRedirect(f"/ludotheque/index/")
+        return HttpResponseRedirect(f"/ludotheque/indexListe/{l}/")
     else:
         return render(request, "ludotheque/joueurs/updateJoueur.html", {"form": listeform})
 

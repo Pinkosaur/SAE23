@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Listes personnelles des joueurs</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}
+Favoris
+{% endblock %}
+{% block content %}
 <a href="/ludotheque/ajoutListe/{{joueur.id}}/">Ajouter un jeu à la liste</a>
 <ul>liste de {{joueur.prenomJoueur}} {{joueur.nomJoueur}}
     {% for l in liste %}
@@ -15,6 +14,4 @@
     </li>
     {% endfor %}
 </ul>
-<a href="/ludotheque/index/">Retourner à la page d'accueil</a>
-</body>
-</html>
+{% endblock %}
