@@ -12,18 +12,18 @@ def traitementCat(request):
     catform = CatForm(request.POST)
     if catform.is_valid():
         cat = catform.save()
-        return render(request, "ludotheque/categories/affichecat.html", {"cat": cat})
+        return render(request, "ludotheque/categories/afficheCat.html", {"cat": cat})
     else:
-        return render(request, "ludotheque/categories/ajoutcat.html", {"cat": catform})
+        return render(request, "ludotheque/categories/ajoutCat.html", {"cat": catform})
 
 def afficheCat(request, id):
     cat = models.Cat.objects.get(pk=id)
-    return render(request, 'ludotheque/categories/affichecat.html', {'cat': cat})
+    return render(request, 'ludotheque/categories/afficheCat.html', {'cat': cat})
 
 def updateCat(request, id):
     cat = models.Cat.objects.get(pk=id)
     catform = CatForm(cat.dic())
-    return render(request, "ludotheque/categories/ajoutupdatecat.html/", {"form":catform, "id":id})
+    return render(request, "ludotheque/categories/ajoutupdateCat.html/", {"form":catform, "id":id})
 
 def updatetraitementCat(request, id):
     catform = CatForm(request.POST)
@@ -34,7 +34,7 @@ def updatetraitementCat(request, id):
         cat.save()
         return HttpResponseRedirect("/ludotheque/indexCat/")
     else:
-        return render(request, "ludotheque/categories/ajoutupdatecat.html", {"form": catform})
+        return render(request, "ludotheque/categories/ajoutupdateCat.html", {"form": catform})
 
 def deleteCat(request, id):
     suppr = models.Cat.objects.get(pk=id)
@@ -43,4 +43,4 @@ def deleteCat(request, id):
 
 def indexCat(request):
     liste = models.Cat.objects.all()
-    return render(request, "ludotheque/categories/indexcat.html", {"liste": liste})
+    return render(request, "ludotheque/categories/indexCat.html", {"liste": liste})

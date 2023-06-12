@@ -10,13 +10,15 @@ def traitementJeu(request):
     jeuform = JeuForm(request.POST)
     if jeuform.is_valid():
         jeu = jeuform.save()
-        return render(request, "ludotheque/jeux/afficheJeu.html", {"jeu": jeu})
+        image = jeu.photoJeu
+        return render(request, "ludotheque/jeux/afficheJeu.html", {"jeu": jeu, 'image':image})
     else:
         return render(request, "ludotheque/jeux/ajoutJeu.html", {"form": jeuform})
 
 def afficheJeu(request, id):
     jeu = models.Jeu.objects.get(pk=id)
-    return render(request, 'ludotheque/jeux/afficheJeu.html', {'jeu': jeu})
+    image = jeu.photoJeu
+    return render(request, 'ludotheque/jeux/afficheJeu.html', {'jeu': jeu, 'image':image})
 
 def updateJeu(request, id):
     jeu = models.Jeu.objects.get(pk=id)
