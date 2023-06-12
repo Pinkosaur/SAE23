@@ -6,19 +6,20 @@ from django.http import HttpResponseRedirect
 
 def ajoutListe(request, id):
     form = ListeForm()
-    models.Liste.liste_id = id
-    return render(request, "ludotheque/listes/ajoutliste.html", {"form": form, "id": id})
+    models.Liste.joueurListe_id = id
+    return render(request, "ludotheque/listes/afficheliste.html", {"form": form, "id": id})
 
 def traitementListe(request, id):
     joueur = models.Joueur.objects.get(pk=id)
     form = ListeForm(request.POST)
     if form.is_valid():
         liste = form.save(commit = False) #commit = False
+        liste.joueurListe = joueur
         liste.joueur_id = id #bizarre
         liste.save()
         return render(request, "ludotheque/listes/afficheliste.html", {"liste": liste, "id":id})
     else:
-        return render(request, "ludotheque/listes/ajoutliste.html", {"form": form})
+        return render(request, "ludotheque/listes/afficheliste.html", {"form": form})
 
 def afficheListe(request, id):
     liste = models.Liste.objects.get(pk=id)
