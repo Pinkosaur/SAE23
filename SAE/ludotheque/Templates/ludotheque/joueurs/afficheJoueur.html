@@ -12,9 +12,13 @@
     <li>Type de joueur : {{joueur.typeJoueur}}</li>
 </ul>
 <ul>Liste des favoris :
-
-
-
+    {% for l in liste %}
+    <li> liste de {{l.prenomJoueur}} {{l.nomJoueur}}
+    <a href="/ludotheque/afficheListe/{{l.id}}/"> Afficher</a> -
+    <a href="/ludotheque/updateListe/{{l.id}}/"> Mettre à jour</a> -
+    <a href="/ludotheque/deleteListe/{{l.id}}/"> Supprimer</a>
+    </li>
+    {% endfor %}
 </ul>
 <p><a href="/ludotheque/indexJoueur/">Retour à la page des joueurs</a></p>
 <p><a href="/ludotheque/index/">Retourner à la page d'accueil</a></p>

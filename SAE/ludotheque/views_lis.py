@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 def ajoutListe(request, id):
     form = ListeForm()
     models.Liste.joueurListe_id = id
-    return render(request, "ludotheque/listes/afficheliste.html", {"form": form, "id": id})
+    return render(request, "ludotheque/listes/ajoutliste.html", {"form": form, "id": id})
 
 def traitementListe(request, id):
     joueur = models.Joueur.objects.get(pk=id)
@@ -23,7 +23,7 @@ def traitementListe(request, id):
 
 def afficheListe(request, id):
     liste = models.Liste.objects.get(pk=id)
-    idjoueur = models.Joueur.objects.get(pk=liste.joueurListe_id)
+    idjoueur = models.Joueur.objects.get(pk=liste.joueurListe_id).id
     return render(request, 'ludotheque/listes/afficheliste.html', {'liste': liste, "idjoueur":idjoueur})
 
 def updateListe(request, id):
@@ -31,6 +31,24 @@ def updateListe(request, id):
     aform = ListeForm(liste.dic())
     return render(request, "ludotheque/listes/updateliste.html/", {"form":aform, "id":id, "liste":liste})
 
-def indexListe(request, id):
+def updatetraitementListe(request, id):
+    listeform = ListeForm(request.POST)
+    saveid = id
+    if listeform.is_valid():
+        liste = listeform.save(commit = False)
+        liste.id = saveid
+        liste.save()
+        return HttpResponseRedirect(f"/ludotheque/index/")
+    else:
+        return render(request, "ludotheque/joueurs/updateJoueur.html", {"form": listeform})
+
+def deleteListe(request, id):
+    suppr = models.Liste.objects.get(pk=id)
+    idjoueur = models.Joueur.objects.get(pk=suppr.joueurListe_id).id
+    suppr.delete()
+    return HttpResponseRedirect(f"/ludotheque/indexListe/{idjoueur}/")
+
+def indexListe(request, id): #id du joueur
     liste = models.Liste.objects.filter(joueurListe_id=id)
-    return render(request, "ludotheque/listes/indexliste.html", {"liste": liste, "id":id})
+    joueur = models.Joueur.objects.get(pk = id)
+    return render(request, "ludotheque/listes/indexliste.html", {"liste": liste, "joueur":joueur})

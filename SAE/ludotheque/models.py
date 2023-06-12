@@ -74,6 +74,8 @@ class Comm(models.Model): #Commentaires sur les jeux
 class Liste(models.Model):
     joueurListe = models.ForeignKey("joueur", on_delete=models.CASCADE)
     jeuListe = models.ForeignKey("jeu", on_delete=models.CASCADE)
-
-class Troll(models.Model):
-    nombre = models.IntegerField(blank=False, null=False)
+    def dic(self):
+        return {"joueurListe":self.joueurListe, "jeuListe":self.jeuListe}
+    def __str__(self):
+        chaine = f"{self.jeuListe}"
+        return chaine

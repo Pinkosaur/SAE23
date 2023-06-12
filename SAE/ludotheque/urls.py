@@ -52,7 +52,10 @@ urlpatterns = [
 
     # Liste
     path("ajoutListe/<int:id>/", views_lis.ajoutListe),
+    path('traitementListe/<int:id>/', views_lis.traitementListe),
     path("afficheListe/<int:id>/", views_lis.afficheListe),
     path("updateListe/<int:id>/", views_lis.updateListe),
+    path('updatetraitementListe/<int:id>/', views_lis.updatetraitementListe),
+    path('deleteListe/<int:id>/', views_lis.deleteListe),
     path("indexListe/<int:id>/", views_lis.indexListe),
     ]
