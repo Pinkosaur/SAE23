@@ -1,31 +1,38 @@
 nav {
+    text-align: center;
+    font-size: 2em;
     float: left;
     border-radius: 20px;
     border-color: rgb(255, 240, 188);
     border-style: solid;
     overflow: hidden;
     width: 100%;
-    background-color: rgb();
+    background-color : rgb(255, 127, 0);
+    padding: 1%, 0%;
+    margin: 0px;
 }
+
+
 
 section{
-    display: block;
-    margin: 3%;
-    text-align: center;
+font-size: 1.5em;
+display: block;
+margin: 5%;
+padding: 3%;
 }
-
 
 body {
     font-family: Arial, sans-serif;
     background-color: rgb(116, 208, 241);
+    margin: 0px;
+    padding: 0px;
 }
 
 
 li {
-   background-color : rgb(255, 127, 0);
    list-style-type: none;
-   margin: 0;
-   padding: 0;
+   margin: 0px;
+   padding: 0px;
    overflow: hidden;
 
 
@@ -35,7 +42,7 @@ header li {
   float: right;
   font-size: 1.6em;
 }
-header li a {
+header li {
   text-decoration: underline;
   display: block;
   text-align: center;
@@ -52,7 +59,9 @@ nav li {
     margin-right: 10px;
 }
 
-nav a { text-decoration: none;
+nav a {
+    display: inline-block;
+    text-decoration: none;
     color: black;
     padding: 5px;
     border: 1px solid black;
@@ -61,3 +70,4 @@ nav a { text-decoration: none;
 nav a:hover {
 background-color: lightgray;
 }
+

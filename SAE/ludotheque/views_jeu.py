@@ -7,7 +7,7 @@ def ajoutJeu(request):
     return render(request, "ludotheque/jeux/ajoutJeu.html", {"form": form})
 
 def traitementJeu(request):
-    jeuform = JeuForm(request.POST)
+    jeuform = JeuForm(data=request.POST, files=request.FILES)
     if jeuform.is_valid():
         jeu = jeuform.save()
         image = jeu.photoJeu
@@ -26,13 +26,14 @@ def updateJeu(request, id):
     return render(request, "ludotheque/jeux/updateJeu.html/", {"form":jeuform, "id":id})
 
 def updatetraitementJeu(request, id):
-    jeuform = JeuForm(request.POST)
+    jeuform = JeuForm(data=request.POST, files=request.FILES)
     saveid = id
     if jeuform.is_valid():
         jeu = jeuform.save(commit = False)
         jeu.id = saveid
         jeu.save()
-        return HttpResponseRedirect("/ludotheque/indexJeu/")
+        image = jeu.photoJeu
+        return render(request, "ludotheque/jeux/afficheJeu.html", {"jeu": jeu, 'image':image})
     else:
         return render(request, "ludotheque/jeux/updateJeu.html", {"form": jeuform})
 

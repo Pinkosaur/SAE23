@@ -9,18 +9,20 @@
 <body>
 <header><h2>Justin Chalérd-Florian Mercklé-Gaetan Thomassin</h2></header>
 <nav>
-
-    <li><a href="/ludotheque/index/">Accueil</a></li>
-    <li><a href="/ludotheque/indexJeu/">Jeux</a></li>
-    <li><a href="/ludotheque/indexCat/">Catégories</a></li>
-    <li><a href="/ludotheque/indexJoueur/">Joueurs</a></li>
-    <li><a href="/ludotheque/indexAuteur/">Auteurs</a></li>
-
+    <p>
+        <a href="/ludotheque/index/">Accueil</a>
+        <a href="/ludotheque/indexJeu/">Jeux</a>
+        <a href="/ludotheque/indexCat/">Catégories</a>
+        <a href="/ludotheque/indexJoueur/">Joueurs</a>
+        <a href="/ludotheque/indexAuteur/">Auteurs</a>
+    </p>
 </nav>
-<div>
+<div id="content">
+    <section>
     {% block content %}
         <h1> bloc principal</h1>
     {% endblock %}
+    </section>
 </div>
 </body>
 </html>
