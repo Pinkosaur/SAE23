@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Ajout d'un jeu</title>
+<title>Ajout d'un commentaire</title>
 </head>
 <body>
-<form method="post" action="/ludotheque/traitementComm_jeu/{{idjeu}}/">
+<form method="post" action="/ludotheque/traitementComm_joueur/{{idjoueur}}/">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
 </form>
-<p><a href="/ludotheque/indexComm/">Retour à la page des commentaires</a></p>
+<p><a href="/ludotheque/indexComm_joueur/{{idjoueur}}">Retour à la page des commentaires</a></p>
 <p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
 </body>
 </html>

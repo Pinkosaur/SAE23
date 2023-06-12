@@ -18,9 +18,12 @@ class Jeu(models.Model):
     editeurJeu = models.CharField(max_length=50)
     auteurJeu = models.ForeignKey("Auteur", on_delete=models.CASCADE, default=None)
     categorieJeu = models.ForeignKey("Cat", on_delete=models.CASCADE, default=None)
+    def __str__(self):
+        chaine = f"{self.titreJeu}"
+        return chaine
     def dic(self):
         return {"titreJeu": self.titreJeu, "anneeJeu": self.anneeJeu, "photoJeu": self.photoJeu, "editeurJeu": self.editeurJeu,
-                }
+        "auteurJeu":self.auteurJeu, "categorieJeu": self.categorieJeu        }
 
 class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
@@ -46,7 +49,9 @@ class Joueur(models.Model):
     emailJoueur = models.EmailField(blank=False, null=False, default="test@test.test")
     mdpJoueur = models.CharField(max_length=30)
     typeJoueur = models.CharField(max_length=30, choices=TYPE, default="Particulier")
-
+    def __str__(self):
+        chaine = f"{self.prenomJoueur} {self.nomJoueur}, {self.typeJoueur}"
+        return chaine
     def dic(self):
         return {"nomJoueur": self.nomJoueur, "prenomJoueur": self.prenomJoueur, "emailJoueur": self.emailJoueur,
                 "mdpJoueur": self.mdpJoueur,
@@ -57,9 +62,13 @@ class Joueur(models.Model):
 class Comm(models.Model): #Commentaires sur les jeux
     jeuComm = models.ForeignKey("jeu", on_delete=models.CASCADE)  #Jeu commenté
     joueurComm = models.ForeignKey("joueur", on_delete=models.CASCADE)
-    noteComm = models.FloatField(blank=False)  # Note attribuée
+    noteComm = models.FloatField(blank=False, max_length=2)  # Note attribuée
     contenuComm = models.TextField(null = False, blank = False)
-    dateComm = django.utils.timezone.now() # à changer --> date auto
+    dateComm = models.DateField(default = django.utils.timezone.now())
+    def dic(self):
+        return {"jeuComm": self.jeuComm, "joueurComm": self.joueurComm, "noteComm": self.noteComm,
+                "contenuComm": self.contenuComm, "dateComm": self.dateComm
+                }
 
 
 class Liste(models.Model):

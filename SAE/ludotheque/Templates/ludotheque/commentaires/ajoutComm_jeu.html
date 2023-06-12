@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ajout d'un commentaire</title>
+</head>
+<body>
+<form method="post" action="/ludotheque/traitementComm_jeu/{{idjeu}}/">
+{% csrf_token %}
+{{ form.as_ul }}
+<input type="submit" value="envoyer les données"/>
+</form>
+<p><a href="/ludotheque/indexComm_jeu/{{idjeu}}">Retour à la page des commentaires</a></p>
+<p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
+</body>
+</html>

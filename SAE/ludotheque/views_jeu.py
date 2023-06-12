@@ -37,7 +37,7 @@ def updatetraitementJeu(request, id):
 def deleteJeu(request, id):
     suppr = models.Jeu.objects.get(pk=id)
     suppr.delete()
-    return HttpResponseRedirect("/ludotheque/jeux/indexJeu")
+    return HttpResponseRedirect("/ludotheque/indexJeu")
 
 def indexJeu(request):
     liste = models.Jeu.objects.all()

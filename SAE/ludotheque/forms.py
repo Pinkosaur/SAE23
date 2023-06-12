@@ -66,7 +66,7 @@ class CommForm_depuisjeu(ModelForm):
         fields = ("joueurComm", "noteComm", "contenuComm")
         labels = {
             'joueurComm': _('Joueur commentant ce jeu'),
-            'noteComm': _('Note'),
+            'noteComm': _('Note sur 10'),
             'contenuComm': _('Commentaire'),
         }
 

@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Ajout d'un jeu</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Ajout d'un jeu{% endblock %}
+{% block content %}
 <form method="post" action="/ludotheque/traitementJeu">
 {% csrf_token %}
 {{ form.as_ul }}
@@ -12,5 +9,4 @@
 </form>
 <p><a href="/ludotheque/indexJeu/">Retour à la page des jeux</a></p>
 <p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}

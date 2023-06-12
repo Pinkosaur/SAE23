@@ -4,12 +4,12 @@
     <title>Commentaires</title>
 </head>
 <body>
-<a href="../ajoutComm/">Ajouter un commentaire</a>
+<a href="/ludotheque/ajoutComm_jeu/{{idjeu}}/">Ajouter un commentaire</a>
 <ul>
     {% for l in liste %}
-    <li> commentaire {{l.id}} : {{l.noteComm}}/10
-    <a href="/ludotheque/afficheComm/{{l.id}}/"> Afficher</a> -
-    <a href="/ludotheque/updateComm/{{l.id}}/"> Mettre à jour</a> -
+    <li>note de {{l.noteComm}}/10 par {{l.joueurComm}} le {{l.dateComm}} -
+    <a href="/ludotheque/afficheComm/{{l.id}}/"> Afficher le commentaire</a> -
+    <a href="/ludotheque/updateComm_jeu/{{l.id}}/"> Modifier</a> -
     <a href="/ludotheque/deleteComm/{{l.id}}/"> Supprimer</a>
     </li>
     {% endfor %}

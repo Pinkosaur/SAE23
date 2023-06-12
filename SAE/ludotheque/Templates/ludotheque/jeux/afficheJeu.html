@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Nouveau jeu ajouté</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Nouveau jeu ajouté{% endblock %}
+{% block content %}
 <p> vous avez ajouté le jeu suivant : jeu n°{{jeu.id}}, {{jeu.titreJeu}}</p>
 <ul>
     <li>année : {{jeu.anneeJeu}}</li>
     <li>éditeur : {{jeu.editeurJeu}}</li>
     <li>image : <img src="{{jeu.photoJeu}}"/></li>
 </ul>
-<p><a href="/ludotheque/indexJeu/">Retour à la page des jeux</a></p>
-<p><a href="/ludotheque/index/">Retourner à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}
