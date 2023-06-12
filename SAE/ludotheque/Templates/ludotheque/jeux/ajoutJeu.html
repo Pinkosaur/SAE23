@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Ajout d'un jeu{% endblock %}
 {% block content %}
-<form method="post" action="/ludotheque/traitementJeu">
+<form method="post" action="/ludotheque/traitementJeu" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>

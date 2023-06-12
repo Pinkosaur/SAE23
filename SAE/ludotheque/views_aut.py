@@ -4,16 +4,8 @@ from . import models
 from django.http import HttpResponseRedirect
 
 def ajoutAuteur(request):
-    if request.method == "POST":
-        form = AuteurForm(request)
-        if form.is_valid():
-            auteur = form.save()
-            return render(request, "ludotheque/auteurs/afficheAuteur.html", {"auteur": auteur})
-        else:
-            return render(request, "ludotheque/auteurs/ajoutAuteur.html", {"form": form})
-    else:
-        form = AuteurForm()
-        return render(request, "ludotheque/auteurs/ajoutAuteur.html", {"form": form})
+    form = AuteurForm()
+    return render(request, "ludotheque/auteurs/ajoutAuteur.html", {"form": form})
 
 def traitementAuteur(request):
     auteurform = AuteurForm(request.POST)
@@ -29,7 +21,7 @@ def afficheAuteur(request, id):
 
 def updateAuteur(request, id):
     auteur = models.Auteur.objects.get(pk=id)
-    auteurform = AuteurForm(auteur.dic())
+    auteurform = AuteurForm(auteur.dic(), files=request.FILES,)
     return render(request, "ludotheque/auteurs/updateAuteur.html/", {"form":auteurform, "id":id})
 
 def updatetraitementAuteur(request, id):

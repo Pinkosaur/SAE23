@@ -5,7 +5,7 @@
 <title>Ajout d'un auteur</title>
 </head>
 <body>
-<form method="post" action="/ludotheque/traitementAuteur/">
+<form method="post" action="/ludotheque/traitementAuteur/" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>

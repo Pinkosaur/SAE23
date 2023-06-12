@@ -6,6 +6,10 @@
 <ul>
     <li>année : {{jeu.anneeJeu}}</li>
     <li>éditeur : {{jeu.editeurJeu}}</li>
-    <li>image : <img src="{{jeu.photoJeu}}"/></li>
+    <li>
+        {% if post.feature_image %}
+            <img class="img-fluid" src="{{post.feature_image.url}}" alt="{{post.title}}">
+        {% endif %}
+    </li>
 </ul>
 {% endblock %}

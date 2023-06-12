@@ -4,16 +4,8 @@ from . import models
 from django.http import HttpResponseRedirect
 
 def ajoutCat(request):
-    if request.method == "POST":
-        form = CatForm(request)
-        if form.is_valid():
-            cat = form.save()
-            return render(request, "ludotheque/categories/afficheCat.html", {"cat": cat})
-        else:
-            return render(request, "ludotheque/categories/ajoutCat.html", {"form": form})
-    else:
-        form = CatForm()
-        return render(request, "ludotheque/categories/ajoutCat.html", {"form": form})
+    form = CatForm()
+    return render(request, "ludotheque/categories/ajoutCat.html", {"form": form})
 
 
 def traitementCat(request):
