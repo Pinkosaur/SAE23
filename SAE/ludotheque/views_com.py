@@ -30,7 +30,7 @@ def traitementComm_depuisjeu(request, id): #l'id est celui du jeu
         comm.jeuComm = jeu
         comm.jeu_id = id
         comm.save()
-        return render(request, "ludotheque/commentaires/affichecomm_jeu.html", {"comm": comm})
+        return render(request, "ludotheque/commentaires/affichecomm.html", {"comm": comm})
     else:
         return render(request, "ludotheque/commentaires/ajoutcomm_jeu.html", {"comm": commform})
 
