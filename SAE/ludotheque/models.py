@@ -14,7 +14,7 @@ class Cat(models.Model): #Catégorie de jeux
 class Jeu(models.Model):
     titreJeu = models.CharField(max_length=50)
     anneeJeu = models.IntegerField()
-    photoJeu = models.ImageField(blank=True, upload_to='/media') #Peut être à compléter avec (upload_to="...")
+    photoJeu = models.ImageField(blank=True, upload_to='images') #Peut être à compléter avec (upload_to="...")
     editeurJeu = models.CharField(max_length=50)
     auteurJeu = models.ForeignKey("Auteur", on_delete=models.CASCADE, default=None)
     categorieJeu = models.ForeignKey("Cat", on_delete=models.CASCADE, default=None)

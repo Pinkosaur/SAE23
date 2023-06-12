@@ -31,7 +31,7 @@ def updatetraitementAuteur(request, id):
         auteur = auteurform.save(commit = False)
         auteur.id = saveid
         auteur.save()
-        return HttpResponseRedirect("/ludotheque/auteurs/indexAuteur/")
+        return HttpResponseRedirect("/ludotheque/indexAuteur/")
     else:
         return render(request, "ludotheque/auteurs/updateAuteur.html", {"form": auteurform})
 

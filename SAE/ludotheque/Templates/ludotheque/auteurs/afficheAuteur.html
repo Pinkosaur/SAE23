@@ -10,7 +10,7 @@
     <li>âge : {{auteur.ageAuteur}}</li>
         {% if post.feature_image %}
             <li>y a bien une image</li>
-            <li><img class="img-fluid" src="{{post.feature_image.url}}" alt="{{post.title}}"></li>
+            <li><img class="img-fluid" src="{{ MEDIA_URL }}{{ auteur.imageAuteur }" alt="{{post.title}}"></li>
         {% endif %}
 </ul>
 <p><a href="/ludotheque/indexAuteur/">Retour à la page des auteurs</a></p>
