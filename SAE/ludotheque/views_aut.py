@@ -11,8 +11,7 @@ def traitementAuteur(request):
     auteurform = AuteurForm(data=request.POST, files=request.FILES)
     if auteurform.is_valid():
         auteur = auteurform.save()
-        image = auteur.photoAuteur
-        return render(request, "ludotheque/auteurs/afficheAuteur.html", {"auteur": auteur, 'image':image})
+        return render(request, "ludotheque/auteurs/afficheAuteur.html", {"auteur": auteur})
     else:
         return render(request, "ludotheque/auteurs/ajoutAuteur.html", {"form": auteurform})
 
@@ -32,10 +31,8 @@ def updatetraitementAuteur(request, id):
     if auteurform.is_valid():
         auteur = auteurform.save(commit = False)
         auteur.id = saveid
-        image = auteur.photoAuteur
         auteur.save()
-
-        return render(request, "ludotheque/auteurs/afficheAuteur.html", {"auteur": auteur, 'image':image})
+        return render(request, "ludotheque/auteurs/afficheAuteur.html", {"auteur": auteur})
     else:
         return render(request, "ludotheque/auteurs/updateAuteur.html", {"form": auteurform})
 
