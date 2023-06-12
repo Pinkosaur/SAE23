@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "ludotheque/main.html" %}
 {% load static %}
 {% block title %}
 Ajout
@@ -7,11 +7,11 @@ Ajout
 Ajout d'un membre du personnel
 {% endblock %}
 {% block content %}
-<form method="post" action="/aeroport/traitementperso/{{id}}/">
+<form method="post" action="/ludotheque/traitementListe/{{id}}/">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
 </form>
-<p><a href="/aeroport/indexperso/{{id}}/">Retour au menu du personnel</a></p>
-<p><a href="/aeroport/index/">Retour au menu principal</a></p>
+<p><a href="/ludotheque/indexliste/{{idjoueur}}/">Retour à la liste</a></p>
+<p><a href="/ludotheque/index/">Retour au menu principal</a></p>
 {% endblock %}

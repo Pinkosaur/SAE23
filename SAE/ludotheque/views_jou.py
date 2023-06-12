@@ -17,12 +17,13 @@ def traitementJoueur(request):
 
 def afficheJoueur(request, id):
     joueur = models.Joueur.objects.get(pk=id)
-    return render(request, 'ludotheque/joueurs/afficheJoueur.html', {'joueur': joueur})
+    liste = models.Liste.objects.filter(joueurListe_id = id)
+    return render(request, 'ludotheque/joueurs/afficheJoueur.html', {'joueur': joueur, "liste":liste})
 
 def updateJoueur(request, id):
     joueur = models.Joueur.objects.get(pk=id)
     joueurform = JoueurForm(joueur.dic())
-    return render(request, "ludotheque/joueurs/ajoutupdateJoueur.html/", {"form":joueurform, "id":id})
+    return render(request, "ludotheque/joueurs/updateJoueur.html/", {"form":joueurform, "id":id})
 
 def updatetraitementJoueur(request, id):
     joueurform = JoueurForm(request.POST)
@@ -33,7 +34,7 @@ def updatetraitementJoueur(request, id):
         joueur.save()
         return HttpResponseRedirect("/ludotheque/indexJoueur/")
     else:
-        return render(request, "ludotheque/joueurs/ajoutupdateJoueur.html", {"form": joueurform})
+        return render(request, "ludotheque/joueurs/updateJoueur.html", {"form": joueurform})
 
 def deleteJoueur(request, id):
     suppr = models.Joueur.objects.get(pk=id)

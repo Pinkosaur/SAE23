@@ -23,7 +23,8 @@ def traitementListe(request, id):
 
 def afficheListe(request, id):
     liste = models.Liste.objects.get(pk=id)
-    return render(request, 'ludotheque/listes/afficheliste.html', {'liste': liste, "id":id})
+    idjoueur = models.Joueur.objects.get(pk=liste.joueurListe_id)
+    return render(request, 'ludotheque/listes/afficheliste.html', {'liste': liste, "idjoueur":idjoueur})
 
 def updateListe(request, id):
     liste = models.Liste.objects.get(pk=id)
@@ -31,5 +32,5 @@ def updateListe(request, id):
     return render(request, "ludotheque/listes/updateliste.html/", {"form":aform, "id":id, "liste":liste})
 
 def indexListe(request, id):
-    liste = models.Liste.objects.filter(joueur_id=id)
-    return render(request, "ludotheque/liste/indexliste.html", {"liste": liste, "id":id})
+    liste = models.Liste.objects.filter(joueurListe_id=id)
+    return render(request, "ludotheque/listes/indexliste.html", {"liste": liste, "id":id})

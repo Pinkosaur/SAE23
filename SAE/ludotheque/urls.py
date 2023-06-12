@@ -41,17 +41,18 @@ urlpatterns = [
     path('ajoutComm_jeu/<int:id>/', views_com.ajoutComm_depuisjeu),
     path('traitementComm_joueur/<int:id>/', views_com.traitementComm_depuisjoueur),
     path('traitementComm_jeu/<int:id>/', views_com.traitementComm_depuisjeu),
-
     path('afficheComm/<int:id>/', views_com.afficheComm),
-
     path('updateComm_joueur/<int:id>/', views_com.updateComm_depuisjoueur),
     path('updateComm_jeu/<int:id>/', views_com.updateComm_depuisjeu),
     path('updatetraitementComm_joueur/<int:id>/', views_com.updatetraitementComm_depuisjoueur),
     path('updatetraitementComm_jeu/<int:id>/', views_com.updatetraitementComm_depuisjeu),
-
     path('deleteComm/<int:id>/', views_com.deleteComm),
     path('indexComm_jeu/<int:id>/', views_com.indexComm_jeu),
     path('indexComm_joueur/<int:id>/', views_com.indexComm_joueur),
 
     # Liste
+    path("ajoutListe/<int:id>/", views_lis.ajoutListe),
+    path("afficheListe/<int:id>/", views_lis.afficheListe),
+    path("updateListe/<int:id>/", views_lis.updateListe),
+    path("indexListe/<int:id>/", views_lis.indexListe),
     ]
