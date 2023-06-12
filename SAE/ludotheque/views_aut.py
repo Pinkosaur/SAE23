@@ -32,8 +32,9 @@ def updatetraitementAuteur(request, id):
     if auteurform.is_valid():
         auteur = auteurform.save(commit = False)
         auteur.id = saveid
+        image = auteur.photoAuteur
         auteur.save()
-        image = "ADE_lundi_22-05.jpg"#auteur.photoAuteur
+
         return render(request, "ludotheque/auteurs/afficheAuteur.html", {"auteur": auteur, 'image':image})
     else:
         return render(request, "ludotheque/auteurs/updateAuteur.html", {"form": auteurform})
