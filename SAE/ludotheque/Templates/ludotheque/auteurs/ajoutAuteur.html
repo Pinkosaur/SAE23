@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Ajout d'un auteur</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Ajout d'un auteur
+{% endblock %}
+{% block content %}
 <form method="post" action="/ludotheque/traitementAuteur/" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.as_ul }}
@@ -12,5 +10,4 @@
 </form>
 <p><a href="/ludotheque/indexAuteur/">Retour à la page des auteurs</a></p>
 <p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}
