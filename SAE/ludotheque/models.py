@@ -29,7 +29,7 @@ class Auteur(models.Model):
     nomAuteur = models.CharField(max_length=25)
     prenomAuteur = models.CharField(max_length=25)
     ageAuteur = models.IntegerField(blank=True, null=True)
-    photoAuteur = models.ImageField(null=True, blank=True, upload_to='images/', default = "imagess/default.png")
+    photoAuteur = models.ImageField(null=True, blank=True, upload_to='images/', default = "images/default.png")
     def __str__(self):
         chaine = f"{self.prenomAuteur} {self.nomAuteur}"
         return chaine
