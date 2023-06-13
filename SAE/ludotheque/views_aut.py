@@ -26,7 +26,7 @@ def updateAuteur(request, id):
     return render(request, "ludotheque/auteurs/updateAuteur.html/", {"form":auteurform, "id":id})
 
 def updatetraitementAuteur(request, id):
-    auteurform = AuteurForm(data=request.POST, files=request.FILES)
+    auteurform = AuteurForm(request.POST, request.FILES)
     saveid = id
     if auteurform.is_valid():
         auteur = auteurform.save(commit = False)

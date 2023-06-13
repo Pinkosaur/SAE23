@@ -14,7 +14,7 @@ class Cat(models.Model): #Catégorie de jeux
 class Jeu(models.Model):
     titreJeu = models.CharField(max_length=50)
     anneeJeu = models.IntegerField()
-    photoJeu = models.ImageField(null=True, blank=True, upload_to='images/')
+    photoJeu = models.ImageField(null=True, blank=True, upload_to='images/', default = "images/default.png")
     editeurJeu = models.CharField(max_length=50)
     auteurJeu = models.ForeignKey("Auteur", on_delete=models.CASCADE, default=None)
     categorieJeu = models.ForeignKey("Cat", on_delete=models.CASCADE, default=None)
@@ -22,7 +22,7 @@ class Jeu(models.Model):
         chaine = f"{self.titreJeu}"
         return chaine
     def dic(self):
-        return {"titreJeu": self.titreJeu, "anneeJeu": self.anneeJeu, "photoJeu": self.photoJeu, "editeurJeu": self.editeurJeu,
+        return {"titreJeu": self.titreJeu, "anneeJeu": self.anneeJeu, "photoJeu": self.photoJeu.file, "editeurJeu": self.editeurJeu,
         "auteurJeu":self.auteurJeu, "categorieJeu": self.categorieJeu        }
 
 class Auteur(models.Model):
@@ -60,6 +60,7 @@ class Joueur(models.Model):
 
 
 class Comm(models.Model): #Commentaires sur les jeux
+
     jeuComm = models.ForeignKey("jeu", on_delete=models.CASCADE)  #Jeu commenté
     joueurComm = models.ForeignKey("joueur", on_delete=models.CASCADE)
     noteComm = models.FloatField(blank=False, max_length=2)  # Note attribuée
@@ -69,8 +70,9 @@ class Comm(models.Model): #Commentaires sur les jeux
         return {"jeuComm": self.jeuComm, "joueurComm": self.joueurComm, "noteComm": self.noteComm,
                 "contenuComm": self.contenuComm, "dateComm": self.dateComm
                 }
-
-
+    def __str__(self):
+        chaine = f"Commentaire de{self.joueurComm} sur {self.jeuComm} le {self.dateComm}: {self.noteComm}/10, {self.contenuComm}"
+        return chaine
 class Liste(models.Model):
     joueurListe = models.ForeignKey("joueur", on_delete=models.CASCADE)
     jeuListe = models.ForeignKey("jeu", on_delete=models.CASCADE)

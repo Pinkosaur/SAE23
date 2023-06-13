@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Nouvelle catégorie ajoutée</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Nouvelle catégorie ajoutée{% endblock %}
+{% block content %}
 <p> vous avez ajouté la catégorie suivante : {{cat.nomCat}}</p>
 <p> description : {{cat.descriptifCat}}</p>
 <p><a href="/ludotheque/indexCat/">Retour à la page des catégories</a></p>
 <p><a href="/ludotheque/index/">Retourner à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}

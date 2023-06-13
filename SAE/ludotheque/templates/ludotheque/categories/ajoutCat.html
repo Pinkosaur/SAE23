@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Ajout d'une catégorie</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Ajout d'une catégories{% endblock %}
+{% block content %}
 <form method="post" action="/ludotheque/traitementCat">
 {% csrf_token %}
 {{ form.as_ul }}
@@ -12,5 +9,4 @@
 </form>
 <p><a href="/ludotheque/indexCat/">Retour à la page des catégories</a></p>
 <p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
-</body>
-</html>
+{% endblock %}

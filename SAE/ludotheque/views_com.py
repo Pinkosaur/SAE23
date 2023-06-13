@@ -80,7 +80,7 @@ def deleteComm(request, id):
     return render(request, "ludotheque/commentaires/deleted.html")
 
 def indexComm_jeu(request, id): #id du jeu
-    list = models.Comm.objects.filter(jeuComm=id)
+    list = models.Comm.objects.filter(jeuComm=id).order_by('-noteComm')
     return render(request, "ludotheque/commentaires/indexComm_jeu.html", {"liste": list, "idjeu":id})
 
 def indexComm_joueur(request, id):

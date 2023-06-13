@@ -17,8 +17,7 @@ def traitementJeu(request):
 
 def afficheJeu(request, id):
     jeu = models.Jeu.objects.get(pk=id)
-    image = jeu.photoJeu
-    return render(request, 'ludotheque/jeux/afficheJeu.html', {'jeu': jeu, 'image':image})
+    return render(request, 'ludotheque/jeux/afficheJeu.html', {'jeu': jeu})
 
 def updateJeu(request, id):
     jeu = models.Jeu.objects.get(pk=id)
@@ -32,16 +31,25 @@ def updatetraitementJeu(request, id):
         jeu = jeuform.save(commit = False)
         jeu.id = saveid
         jeu.save()
-        image = jeu.photoJeu
-        return render(request, "ludotheque/jeux/afficheJeu.html", {"jeu": jeu, 'image':image})
+        return render(request, "ludotheque/jeux/afficheJeu.html", {"jeu": jeu})
     else:
         return render(request, "ludotheque/jeux/updateJeu.html", {"form": jeuform})
 
 def deleteJeu(request, id):
     suppr = models.Jeu.objects.get(pk=id)
     suppr.delete()
-    return HttpResponseRedirect("/ludotheque/indexJeu")
+    return HttpResponseRedirect("/ludotheque/indexJeu/")
 
 def indexJeu(request):
     liste = models.Jeu.objects.all()
-    return render(request, "ludotheque/jeux/indexJeu.html", {"liste": liste})
+    a = 0.0
+    b = 0
+    for l in liste:
+        notes = models.Comm.objects.filter(jeuComm_id=l.id)
+        if notes:
+            for n in notes:
+                a += float(n.noteComm)
+                b += 1
+            a /= b
+            l.notemoyenne = a
+    return render(request, "ludotheque/jeux/indexJeu.html", {"liste": liste,})

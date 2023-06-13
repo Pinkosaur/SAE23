@@ -5,7 +5,7 @@
 <a href="../ajoutJeu/">Ajouter un jeu</a>
 <ul>
     {% for l in liste %}
-    <li> jeu {{l.id}} : {{l.titreJeu}}
+    <li> jeu {{l.id}} : {{l.titreJeu}}, {% if l.notemoyenne %}note moyenne de {{l.notemoyenne}}/10{% else %}pas encore de notes{% endif %}
     <a href="/ludotheque/afficheJeu/{{l.id}}/"> Afficher</a> -
     <a href="/ludotheque/updateJeu/{{l.id}}/"> Mettre à jour</a> -
     <a href="/ludotheque/deleteJeu/{{l.id}}/"> Supprimer</a>  -
