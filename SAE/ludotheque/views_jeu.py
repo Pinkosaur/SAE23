@@ -42,12 +42,14 @@ def deleteJeu(request, id):
 
 def indexJeu(request):
     liste = models.Jeu.objects.all()
-    """note_moyenne = 0
-    diviseur = 0
-    notes = models.Comm.objects.filter(jeuComm_id=liste.id)
-    for i in notes.noteComm:
-        note_moyenne += i
-        diviseur +=1
-    note_moyenne/=diviseur"""
-    return render(request, "ludotheque/jeux/indexJeu.html", {"liste": liste,# 'note_moyenne':note_moyenne
-                  })
+    a = 0.0
+    b = 0
+    for l in liste:
+        notes = models.Comm.objects.filter(jeuComm_id=l.id)
+        if notes:
+            for n in notes:
+                a += float(n.noteComm)
+                b += 1
+            a /= b
+            l.notemoyenne = a
+    return render(request, "ludotheque/jeux/indexJeu.html", {"liste": liste,})

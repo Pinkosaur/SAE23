@@ -70,8 +70,9 @@ class Comm(models.Model): #Commentaires sur les jeux
         return {"jeuComm": self.jeuComm, "joueurComm": self.joueurComm, "noteComm": self.noteComm,
                 "contenuComm": self.contenuComm, "dateComm": self.dateComm
                 }
-
-
+    def __str__(self):
+        chaine = f"Commentaire de{self.joueurComm} sur {self.jeuComm} le {self.dateComm}: {self.noteComm}/10, {self.contenuComm}"
+        return chaine
 class Liste(models.Model):
     joueurListe = models.ForeignKey("joueur", on_delete=models.CASCADE)
     jeuListe = models.ForeignKey("jeu", on_delete=models.CASCADE)
