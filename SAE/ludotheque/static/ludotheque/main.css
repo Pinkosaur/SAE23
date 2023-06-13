@@ -1,4 +1,4 @@
-nav {
+/*nav {
     text-align: center;
     font-size: 2em;
     float: left;
@@ -10,7 +10,7 @@ nav {
     background-color : rgb(255, 127, 0);
     padding: 1%, 0%;
     margin: 0px;
-}
+}*/
 
 
 
@@ -22,20 +22,40 @@ padding: 3%;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(116, 208, 241);
+    font-family: Verdana, sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url('./background.jpg');
+    background-size:cover;
     margin: 0px;
     padding: 0px;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
 li {
-   list-style-type: none;
-   margin: 0px;
-   padding: 0px;
-   overflow: hidden;
+  float: right;
+}
 
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 32px;
+  text-decoration: none;
+}
 
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #060c4d;
 }
 
 header li {

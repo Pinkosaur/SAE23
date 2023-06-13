@@ -7,16 +7,16 @@
     <link rel="stylesheet" type="text/css" href="{%static 'ludotheque/main.css'%}">
 </head>
 <body>
-<header><h2>Justin Chalérd-Florian Mercklé-Gaetan Thomassin</h2></header>
-<nav>
-    <p>
-        <a href="/ludotheque/index/">Accueil</a>
-        <a href="/ludotheque/indexJeu/">Jeux</a>
-        <a href="/ludotheque/indexCat/">Catégories</a>
-        <a href="/ludotheque/indexJoueur/">Joueurs</a>
-        <a href="/ludotheque/indexAuteur/">Auteurs</a>
-    </p>
-</nav>
+
+<ul>
+  <li><a href="/ludotheque/index/">Accueil</a></li>
+  <li ><a href="/ludotheque/indexJoueur/">Joueurs</a></li>
+  <li ><a href="/ludotheque/indexAuteur/">Auteurs</a></li>
+  <li><a href="/ludotheque/indexCat/">Catégories</a></li>
+  <li><a href="/ludotheque/indexJeu/">Jeux</a></li>
+  <p>Justin CHALEARD - Florian MERCKLE - Gaetan THOMASSIN</p>
+</ul>
+
 <div id="content">
     <section>
     {% block content %}
