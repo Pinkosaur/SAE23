@@ -5,12 +5,16 @@
 
 <a href="/ludotheque/ajoutComm_joueur/{{idjoueur}}">Ajouter un commentaire</a>
 <ul>
-    {% for l in liste %}
-    <li>note de {{l.noteComm}}/10 par {{l.joueurComm}} le {{l.dateComm}} -
-    <a href="/ludotheque/afficheComm/{{l.id}}/"> Afficher le commentaire</a> -
-    <a href="/ludotheque/updateComm_joueur/{{l.id}}/"> Modifier</a> -
-    <a href="/ludotheque/deleteComm/{{l.id}}/"> Supprimer</a>
-    </li>
-    {% endfor %}
+    {% if liste %}
+        {% for l in liste %}
+        <li>note de {{l.noteComm}}/10 par {{l.joueurComm}} le {{l.dateComm}} -
+        <a href="/ludotheque/afficheComm/{{l.id}}/"> Afficher le commentaire</a> -
+        <a href="/ludotheque/updateComm_joueur/{{l.id}}/"> Modifier</a> -
+        <a href="/ludotheque/deleteComm/{{l.id}}/"> Supprimer</a>
+        </li>
+        {% endfor %}
+    {% else %}
+        <li>La liste est vide, pour le moment.</li>
+    {% endif %}
 </ul>
 {% endblock %}

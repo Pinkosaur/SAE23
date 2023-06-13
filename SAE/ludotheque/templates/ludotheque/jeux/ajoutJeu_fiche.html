@@ -1,0 +1,11 @@
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Ajout d'un jeu via un fichier{% endblock %}
+{% block content %}
+<form method="post" action="/ludotheque/traitementFichier/" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_ul }}
+<input type="submit" value="envoyer les données"/>
+</form>
+<p><a href="/ludotheque/aideFichier/">aide à l'ajout des jeux par fichiers</a></p>
+{% endblock %}

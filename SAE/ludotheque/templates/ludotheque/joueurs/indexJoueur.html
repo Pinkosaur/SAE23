@@ -5,14 +5,18 @@
 {% block content %}
 <a href="/ludotheque/ajoutJoueur/">Ajouter un joueur</a>
 <ul>
-    {% for l in liste %}
-    <li> joueur {{l.id}} : {{l.prenomJoueur}} {{l.nomJoueur}}
-    <a href="/ludotheque/afficheJoueur/{{l.id}}/"> Afficher</a> -
-    <a href="/ludotheque/updateJoueur/{{l.id}}/"> Mettre à jour</a> -
-    <a href="/ludotheque/deleteJoueur/{{l.id}}/"> Supprimer</a> -
-    <a href="/ludotheque/indexComm_joueur/{{l.id}}/"> Voir les commentaires de ce joueur</a> -
-    <a href="/ludotheque/indexListe/{{l.id}}/"> Voir la liste de ce joueur</a>
-    </li>
-    {% endfor %}
+    {% if liste %}
+        {% for l in liste %}
+        <li> joueur {{l.id}} : {{l.prenomJoueur}} {{l.nomJoueur}}
+        <a href="/ludotheque/afficheJoueur/{{l.id}}/"> Afficher</a> -
+        <a href="/ludotheque/updateJoueur/{{l.id}}/"> Mettre à jour</a> -
+        <a href="/ludotheque/deleteJoueur/{{l.id}}/"> Supprimer</a> -
+        <a href="/ludotheque/indexComm_joueur/{{l.id}}/"> Voir les commentaires de ce joueur</a> -
+        <a href="/ludotheque/indexListe/{{l.id}}/"> Voir la liste de ce joueur</a>
+        </li>
+        {% endfor %}
+    {% else %}
+        <li>La liste est vide, pour le moment.</li>
+    {% endif %}
 </ul>
 {% endblock %}

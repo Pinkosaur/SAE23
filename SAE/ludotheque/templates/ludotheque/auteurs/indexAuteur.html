@@ -5,12 +5,16 @@
 {% block content %}
 <a href="../ajoutAuteur/">Ajouter un auteur</a>
 <ul>
-    {% for l in liste %}
-    <li> auteur {{l.id}} : {{l.prenomAuteur}} {{l.nomAuteur}}
-    <a href="/ludotheque/afficheAuteur/{{l.id}}/"> Afficher</a> -
-    <a href="/ludotheque/updateAuteur/{{l.id}}/"> Mettre à jour</a> -
-    <a href="/ludotheque/deleteAuteur/{{l.id}}/"> Supprimer</a>
-    </li>
-    {% endfor %}
+    {% if liste %}
+        {% for l in liste %}
+        <li> auteur {{l.id}} : {{l.prenomAuteur}} {{l.nomAuteur}}
+        <a href="/ludotheque/afficheAuteur/{{l.id}}/"> Afficher</a> -
+        <a href="/ludotheque/updateAuteur/{{l.id}}/"> Mettre à jour</a> -
+        <a href="/ludotheque/deleteAuteur/{{l.id}}/"> Supprimer</a>
+        </li>
+        {% endfor %}
+    {% else %}
+        <li>La liste est vide, pour le moment.</li>
+    {% endif %}
 </ul>
 {% endblock %}
