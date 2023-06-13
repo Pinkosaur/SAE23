@@ -3,7 +3,7 @@ from . import views, views_cat, views_com, views_jeu, views_jou, views_lis, view
 
 
 urlpatterns = [
-    path('index/', views.index),
+    path('', views.index),
 
     path('ajoutJeu/', views_jeu.ajoutJeu),
     path('traitementJeu', views_jeu.traitementJeu),
