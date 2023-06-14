@@ -2,8 +2,9 @@
 {% load static %}
 {% block title %}Aide{% endblock %}
 {% block content %}
-<p>La fiche doit contenir les informations au format suivant : <br>["<b>Titre du jeu</b>", "<b>Année de parution</b>", "<b>Éditeur</b>", "<b>Catégorie</b>", "<b>Auteur (prénom et nom séparés d'un espace)</b>"]
-<br>Les virgules, les guillemets et les crochets au début et à la fin sont très importants. Si l'auteur est inconnu, laisser des guillemets vides.
-</p>
+<p>La fiche doit contenir les informations du jeu dans l'ordre suivant :<br>
+    titre, année de parution, éditeur, catégorie, prénom de l'auteur, nom de l'auteur.<br>
+    Toutes ces informations doivent être renseignées.<br>
+Chacune de ces informations doit être séparée par un espace, et le fichier doit commencer et se terminer par des guillemets.</p>
 <a href="/ludotheque/ajoutJeu_fiche/" class="navigation">OK</a>
 {% endblock %}

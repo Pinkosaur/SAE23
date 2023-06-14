@@ -50,7 +50,7 @@ class Joueur(models.Model):
     mdpJoueur = models.CharField(max_length=30)
     typeJoueur = models.CharField(max_length=30, choices=TYPE, default="Particulier")
     def __str__(self):
-        chaine = f"{self.prenomJoueur} {self.nomJoueur}, {self.typeJoueur}"
+        chaine = f"{self.prenomJoueur} {self.nomJoueur} ({self.typeJoueur})"
         return chaine
     def dic(self):
         return {"nomJoueur": self.nomJoueur, "prenomJoueur": self.prenomJoueur, "emailJoueur": self.emailJoueur,
@@ -73,6 +73,7 @@ class Comm(models.Model): #Commentaires sur les jeux
     def __str__(self):
         chaine = f"Commentaire de{self.joueurComm} sur {self.jeuComm} le {self.dateComm}: {self.noteComm}/10, {self.contenuComm}"
         return chaine
+
 class Liste(models.Model):
     joueurListe = models.ForeignKey("joueur", on_delete=models.CASCADE)
     jeuListe = models.ForeignKey("jeu", on_delete=models.CASCADE)

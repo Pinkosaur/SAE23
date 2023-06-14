@@ -7,7 +7,14 @@
 <ul>
     {% if liste %}
         {% for l in liste %}
-        <li> jeu {{l.id}} : {{l.titreJeu}}, {% if l.notemoyenne %}note moyenne de {{l.notemoyenne}}/10{% else %}pas encore de notes{% endif %}<br>---------------
+        <li> jeu {{l.id}} : {{l.titreJeu}}, {% if l.notemoyenne %}note moyenne de {{l.notemoyenne}}/10{% else %}pas encore de notes{% endif %}
+            {% if l.notepart %}
+                <br>Note des particuliers : {{l.notepart}}/10
+            {% endif %}
+            {% if l.notepro %}
+                <br>Note des professionnels : {{l.notepro}}/10
+            {% endif %}
+            <br>---------------
         <a href="/ludotheque/afficheJeu/{{l.id}}/">Afficher</a>
         <a href="/ludotheque/updateJeu/{{l.id}}/">Mettre à jour</a>
         <a href="/ludotheque/deleteJeu/{{l.id}}/">Supprimer</a>

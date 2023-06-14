@@ -69,14 +69,33 @@ def deleteJeu(request, id):
 
 def indexJeu(request):
     liste = models.Jeu.objects.all()
-    a = 0.0
-    b = 0
+    sommeglobal = 0.0
+    sommepart = 0.0
+    sommepro = 0.0
+    nbnotesglobal = 0
+    nbnotespart = 0
+    nbnotespro = 0
     for l in liste:
         notes = models.Comm.objects.filter(jeuComm_id=l.id)
+
+
         if notes:
             for n in notes:
-                a += float(n.noteComm)
-                b += 1
-            a /= b
-            l.notemoyenne = a
+                if models.Joueur.objects.get(pk=n.joueurComm_id).typeJoueur == "Particulier":
+                    sommepart += float(n.noteComm)
+                    nbnotespart += 1
+                else:
+                    sommepro += float(n.noteComm)
+                    nbnotespro += 1
+                sommeglobal += float(n.noteComm)
+                nbnotesglobal += 1
+            sommeglobal /= nbnotesglobal
+            if nbnotespart != 0:
+                sommepart /= nbnotespart
+                l.notepart = sommepart
+            if nbnotespro != 0:
+                sommepro /= nbnotespro
+                l.notepro = sommepro
+            l.notemoyenne = sommeglobal
+        notepro = models.Comm.objects.filter(jeuComm_id=l.id, )
     return render(request, "ludotheque/jeux/indexJeu.html", {"liste": liste,})

@@ -8,7 +8,7 @@
     {% if liste %}
         {% for l in liste %}
         <li>note de {{l.noteComm}}/10 par {{l.joueurComm}} le {{l.dateComm}}<br>---------------
-        <a href="/ludotheque/afficheComm/{{l.id}}/">Afficher le commentaire</a>
+        <a href="/ludotheque/afficheComm_joueur/{{l.id}}/">Afficher le commentaire</a>
         <a href="/ludotheque/updateComm_joueur/{{l.id}}/">Modifier</a>
         <a href="/ludotheque/deleteComm/{{l.id}}/">Supprimer</a>
         </li>

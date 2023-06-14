@@ -85,7 +85,9 @@ def deleteComm(request, id):
 
 def indexComm_jeu(request, id): #id du jeu
     list = models.Comm.objects.filter(jeuComm=id).order_by('-noteComm')
-    return render(request, "ludotheque/commentaires/indexComm_jeu.html", {"liste": list, "idjeu":id})
+    meilleur = list.first()
+    pire = list.last()
+    return render(request, "ludotheque/commentaires/indexComm_jeu.html", {"liste": list, "idjeu":id, "meilleur":meilleur, "pire":pire})
 
 def indexComm_joueur(request, id):
     liste = models.Comm.objects.filter(joueurComm=id)

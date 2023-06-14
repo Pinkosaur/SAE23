@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Nouveau joueur ajouté</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Nouveau joueur ajouté{% endblock %}
+{% block content %}
 <p> vous avez ajouté le joueur suivant : {{joueur.prenomJoueur}} {{joueur.nomJoueur}}</p>
-<ul>Informations du joueur :
+<ul>Informations du joueur :<br>
     <li>Email : {{joueur.emailJoueur}}</li>
     <li>Mot de passe : {{joueur.mdpJoueur}}</li>
     <li>Type de joueur : {{joueur.typeJoueur}}</li>
@@ -21,5 +18,4 @@
     {% endfor %}
 </ul>
 <p><a href="/ludotheque/indexJoueur/" class="navigation">Retour à la page des joueurs</a></p>
-</body>
-</html>
+{% endblock %}

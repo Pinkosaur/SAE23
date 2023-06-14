@@ -3,18 +3,24 @@
 {% block title %}Commentaires{% endblock %}
 {% block content %}
 
-<a href="/ludotheque/ajoutComm_jeu/{{idjeu}}/" class="navigation">Ajouter un commentaire</a>
-<ul>
+<a href="/ludotheque/ajoutComm_jeu/{{idjeu}}/" class="navigation">Ajouter un commentaire</a><br><br>
+
     {% if liste %}
-        {% for l in liste %}
-        <li>note de {{l.noteComm}}/10 par {{l.joueurComm}} le {{l.dateComm}}<br>---------------
-        <a href="/ludotheque/afficheComm/{{l.id}}/">Afficher le commentaire</a>
-        <a href="/ludotheque/updateComm_jeu/{{l.id}}/">Modifier</a>
-        <a href="/ludotheque/deleteComm/{{l.id}}/">Supprimer</a>
-        </li>
-        {% endfor %}
+        Meilleure note :
+        <p>note de {{meilleur.noteComm}}/10 par {{meilleur.joueurComm}} le {{meilleur.dateComm}}<br><a href="/ludotheque/afficheComm/{{l.id}}/">Afficher le commentaire</a></p>
+        Pire note :
+        <p>note de {{pire.noteComm}}/10 par {{pire.joueurComm}} le {{pire.dateComm}}<br><a href="/ludotheque/afficheComm/{{l.id}}/">Afficher le commentaire</a></p>
+        <ul>
+            {% for l in liste %}
+                <li>note de {{l.noteComm}}/10 par {{l.joueurComm}} le {{l.dateComm}}<br>---------------
+                <a href="/ludotheque/afficheComm_jeu/{{l.id}}/">Afficher le commentaire</a>
+                <a href="/ludotheque/updateComm_jeu/{{l.id}}/">Modifier</a>
+                <a href="/ludotheque/deleteComm/{{l.id}}/">Supprimer</a>
+                </li>
+            {% endfor %}
+        </ul>
     {% else %}
-        <li>La liste est vide, pour le moment.</li>
+        <p>La liste est vide, pour le moment.</p>
     {% endif %}
-</ul>
+
 {% endblock %}
