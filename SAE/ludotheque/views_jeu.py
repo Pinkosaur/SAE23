@@ -27,23 +27,12 @@ def traitementFichier(request):
         with open(f"/media/fichiers/{fichierform.fichier}", 'r') as f:
             jeu = json.load(f)
         jeu.split(',')
-        titre = jeu[0]
-        annee = jeu[1]
-        editeur = jeu[2]
         auteur = jeu[3].split(' ')
         prenomauteur = auteur[0]
         nomauteur = auteur[1]
-        categorie = jeu[4]
         idauteur = models.Auteur.objects.get(prenomAuteur=prenomauteur, nomAuteur=nomauteur).id
-        idcat = models.Cat.objects.get(nomCat=categorie).id
         if idauteur:
-            idjeu =int(models.Jeu.objects.last().id) + 1
-            data = f'"{idjeu}","{titre}","{annee}","","{editeur}","{idauteur}","{idcat}"'
-            with open(f"/var/lib/mysql-files/entree{idjeu}.json", 'w') as f:
-                json.dump(data, f)
-            models.Jeu.objects.raw(f"LOAD DATA INFILE '/var/lib/mysql-files/entree{idjeu}.json' INTO TABLE ludotheque_jeu FIELDS TERMINATED BY ',' ENCLOSED BY '\"'")
-#        else:
-    #else retour à la page d'ajout
+            models.Jeu.objects.create(titreJeu = jeu[0], anneeJeu = jeu[1], editeurJeu = jeu[2], categorieJeu=models.Cat.objects.get(nomCat=jeu[4]).id,)
 
 
 def aideFichier(request):

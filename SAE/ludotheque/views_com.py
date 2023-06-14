@@ -30,23 +30,23 @@ def traitementComm_depuisjeu(request, id): #l'id est celui du jeu
         comm.jeuComm = jeu
         comm.jeu_id = id
         comm.save()
-        return render(request, "ludotheque/commentaires/affichecomm.html", {"comm": comm})
+        return render(request, "ludotheque/commentaires/afficheComm.html", {"comm": comm})
     else:
-        return render(request, "ludotheque/commentaires/ajoutcomm_jeu.html", {"comm": commform})
+        return render(request, "ludotheque/commentaires/ajoutComm_jeu.html", {"comm": commform})
 
 def afficheComm(request, id):
     comm = models.Comm.objects.get(pk=id)
-    return render(request, 'ludotheque/commentaires/affichecomm.html', {'comm': comm})
+    return render(request, 'ludotheque/commentaires/afficheComm.html', {'comm': comm})
 
 def updateComm_depuisjoueur(request, id):
     comm = models.Comm.objects.get(pk=id)
     commform = CommForm_depuisjoueur(comm.dic())
-    return render(request, "ludotheque/commentaires/updatecomm_joueur.html", {"form":commform, "id":id})
+    return render(request, "ludotheque/commentaires/updateComm_joueur.html", {"form":commform, "id":id})
 
 def updateComm_depuisjeu(request, id):
     comm = models.Comm.objects.get(pk=id)
     commform = CommForm_depuisjeu(comm.dic())
-    return render(request, "ludotheque/commentaires/updatecomm_jeu.html", {"form":commform, "id":id})
+    return render(request, "ludotheque/commentaires/updateComm_jeu.html", {"form":commform, "id":id})
 
 def updatetraitementComm_depuisjoueur(request, id):
     c = models.Comm.objects.get(pk=id)
@@ -72,7 +72,7 @@ def updatetraitementComm_depuisjeu(request, id):
         comm.save()
         return HttpResponseRedirect(f"/ludotheque/indexComm_jeu/{c.jeuComm_id}/")
     else:
-        return render(request, "ludotheque/commentaires/updatecomm_jeu.html", {"form": commform})
+        return render(request, "ludotheque/commentaires/updateComm_jeu.html", {"form": commform})
 
 def deleteComm(request, id):
     suppr = models.Comm.objects.get(pk=id)
