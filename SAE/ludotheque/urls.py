@@ -63,3 +63,4 @@ urlpatterns = [
     path('deleteListe/<int:id>/', views_lis.deleteListe),
     path("indexListe/<int:id>/", views_lis.indexListe),
     ]
+

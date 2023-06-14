@@ -44,3 +44,4 @@ def deleteCat(request, id):
 def indexCat(request):
     liste = models.Cat.objects.all()
     return render(request, "ludotheque/categories/indexCat.html", {"liste": liste})
+
