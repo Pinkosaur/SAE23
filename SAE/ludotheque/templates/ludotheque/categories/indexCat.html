@@ -2,14 +2,14 @@
 {% load static %}
 {% block title %}Liste des catégories{% endblock %}
 {% block content %}
-<a href="../ajoutCat/">Ajouter une catégorie</a>
+<a href="../ajoutCat/" class="navigation">Ajouter une catégorie</a>
 <ul>
     {% if liste %}
         {% for l in liste %}
-        <li> cat {{l.id}} : {{l.nomCat}}
-        <a href="/ludotheque/afficheCat/{{l.id}}/"> Afficher</a> -
-        <a href="/ludotheque/updateCat/{{l.id}}/"> Mettre à jour</a> -
-        <a href="/ludotheque/deleteCat/{{l.id}}/"> Supprimer</a>
+        <li> cat {{l.id}} : {{l.nomCat}}<br>---------------
+        <a href="/ludotheque/afficheCat/{{l.id}}/">Afficher</a>
+        <a href="/ludotheque/updateCat/{{l.id}}/">Mettre à jour</a>
+        <a href="/ludotheque/deleteCat/{{l.id}}/">Supprimer</a>
         </li>
         {% endfor %}
     {% else %}

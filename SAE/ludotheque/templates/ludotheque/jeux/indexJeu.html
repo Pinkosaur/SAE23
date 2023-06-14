@@ -2,16 +2,16 @@
 {% load static %}
 {% block title %}Liste des jeux{% endblock %}
 {% block content %}
-<a href="../ajoutJeu/">Ajouter un jeu</a>
-<a href="../ajoutJeu_fiche/">Ajouter un jeu à l'aide d'une fiche</a>
+<a href="../ajoutJeu/" class="navigation">Ajouter un jeu</a>
+<a href="../ajoutJeu_fiche/" class="navigation">Ajouter un jeu à l'aide d'une fiche</a>
 <ul>
     {% if liste %}
         {% for l in liste %}
-        <li> jeu {{l.id}} : {{l.titreJeu}}, {% if l.notemoyenne %}note moyenne de {{l.notemoyenne}}/10{% else %}pas encore de notes{% endif %}
-        <a href="/ludotheque/afficheJeu/{{l.id}}/"> Afficher</a> -
-        <a href="/ludotheque/updateJeu/{{l.id}}/"> Mettre à jour</a> -
-        <a href="/ludotheque/deleteJeu/{{l.id}}/"> Supprimer</a>  -
-            <a href="/ludotheque/indexComm_jeu/{{l.id}}/"> Commentaires</a>
+        <li> jeu {{l.id}} : {{l.titreJeu}}, {% if l.notemoyenne %}note moyenne de {{l.notemoyenne}}/10{% else %}pas encore de notes{% endif %}<br>---------------
+        <a href="/ludotheque/afficheJeu/{{l.id}}/">Afficher</a>
+        <a href="/ludotheque/updateJeu/{{l.id}}/">Mettre à jour</a>
+        <a href="/ludotheque/deleteJeu/{{l.id}}/">Supprimer</a>
+            <a href="/ludotheque/indexComm_jeu/{{l.id}}/">Commentaires</a>
         </li>
         {% endfor %}
     {% else %}

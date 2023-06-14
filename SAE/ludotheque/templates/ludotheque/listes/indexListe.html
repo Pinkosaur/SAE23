@@ -8,9 +8,9 @@ Favoris
 <ul>liste de {{joueur.prenomJoueur}} {{joueur.nomJoueur}}
     {% if liste %}
         {% for l in liste %}
-        <li>{{l}}
-        <a href="/ludotheque/afficheListe/{{l.id}}/"> Afficher</a> -
-        <a href="/ludotheque/updateListe/{{l.id}}/"> Mettre à jour</a> -
+        <li>{{l}}<br>---------------
+        <a href="/ludotheque/afficheListe/{{l.id}}/"> Afficher</a>
+        <a href="/ludotheque/updateListe/{{l.id}}/"> Mettre à jour</a>
         <a href="/ludotheque/deleteListe/{{l.id}}/"> Supprimer</a>
         </li>
         {% endfor %}

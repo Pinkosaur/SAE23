@@ -3,6 +3,7 @@ from .forms import JeuForm, JeuFichierForm
 from . import models
 from django.http import HttpResponseRedirect
 import json
+
 def ajoutJeu(request):
     form = JeuForm()
     return render(request, "ludotheque/jeux/ajoutJeu.html", {"form": form})
@@ -31,8 +32,15 @@ def traitementFichier(request):
         prenomauteur = auteur[0]
         nomauteur = auteur[1]
         idauteur = models.Auteur.objects.get(prenomAuteur=prenomauteur, nomAuteur=nomauteur).id
-        if idauteur:
-            models.Jeu.objects.create(titreJeu = jeu[0], anneeJeu = jeu[1], editeurJeu = jeu[2], categorieJeu=models.Cat.objects.get(nomCat=jeu[4]).id,)
+        if not idauteur:
+            auteur = models.Auteur.objects.create(prenomAuteur= prenomauteur, nomAuteur=nomauteur, ageAuteur=None, photoAuteur="images/default.png")
+            models.Auteur.objects.add(auteur)
+            idauteur = auteur.id
+        nouveaujeu = models.Jeu.objects.create(titreJeu=jeu[0], anneeJeu=jeu[1], editeurJeu=jeu[2], categorieJeu=models.Cat.objects.get(nomCat=jeu[4]).id, auteurJeu=idauteur)
+        models.Jeu.objects.add(nouveaujeu)
+        return HttpResponseRedirect("/ludotheque/indexJeu/")
+    else:
+        return render(request, "ludotheque/jeux/ajoutJeu_fiche.html", {"form":fichierform})
 
 
 def aideFichier(request):

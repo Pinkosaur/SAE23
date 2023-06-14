@@ -1,6 +1,6 @@
 from django.db import models
 import django.utils.timezone
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Cat(models.Model): #Catégorie de jeux
     nomCat = models.CharField(max_length=100)
@@ -63,9 +63,9 @@ class Comm(models.Model): #Commentaires sur les jeux
 
     jeuComm = models.ForeignKey("jeu", on_delete=models.CASCADE)  #Jeu commenté
     joueurComm = models.ForeignKey("joueur", on_delete=models.CASCADE)
-    noteComm = models.FloatField(blank=False, max_length=2)  # Note attribuée
+    noteComm = models.FloatField(blank=False, max_length=2) #Note attribuée
     contenuComm = models.TextField(null = False, blank = False)
-    dateComm = models.DateField(default = django.utils.timezone.now())
+    dateComm = models.DateField(default = django.utils.timezone.now)
     def dic(self):
         return {"jeuComm": self.jeuComm, "joueurComm": self.joueurComm, "noteComm": self.noteComm,
                 "contenuComm": self.contenuComm, "dateComm": self.dateComm

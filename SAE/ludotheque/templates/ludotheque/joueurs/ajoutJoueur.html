@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Ajout d'un joueur</title>
-</head>
-<body>
+{% extends "ludotheque/main.html" %}
+{% load static %}
+{% block title %}Ajout d'un joueur
+{% endblock %}
+{% block content %}
 <form method="post" action="/ludotheque/traitementJoueur/">
 {% csrf_token %}
 {{ form.as_ul }}
 <input type="submit" value="envoyer les données"/>
 </form>
-<p><a href="/ludotheque/indexAuteur/">Retour à la page des joueurs</a></p>
-<p><a href="/ludotheque/index/">Retour à la page d'accueil</a></p>
-</body>
-</html>
+<p><a href="/ludotheque/indexAuteur/" class="navigation">Retour à la page des joueurs</a></p>
+{% endblock %}

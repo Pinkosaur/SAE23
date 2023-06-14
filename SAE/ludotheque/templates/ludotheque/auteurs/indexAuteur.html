@@ -3,11 +3,14 @@
 {% block title %}Liste des auteurs
 {% endblock %}
 {% block content %}
-<a href="../ajoutAuteur/">Ajouter un auteur</a>
+<a href="../ajoutAuteur/" class="navigation">Ajouter un auteur</a>
 <ul>
     {% if liste %}
         {% for l in liste %}
-        <li> auteur {{l.id}} : {{l.prenomAuteur}} {{l.nomAuteur}}<a href="/ludotheque/afficheAuteur/{{l.id}}/"> Afficher</a> -<a href="/ludotheque/updateAuteur/{{l.id}}/"> Mettre à jour</a> -<a href="/ludotheque/deleteAuteur/{{l.id}}/"> Supprimer</a></li>
+        <li> auteur {{l.id}} : {{l.prenomAuteur}} {{l.nomAuteur}}<br>---------------
+            <a href="/ludotheque/afficheAuteur/{{l.id}}/">Afficher</a>
+            <a href="/ludotheque/updateAuteur/{{l.id}}/">Mettre à jour</a>
+            <a href="/ludotheque/deleteAuteur/{{l.id}}/">Supprimer</a></li>
         {% endfor %}
     {% else %}
         <li>La liste est vide, pour le moment.</li>
