@@ -5,7 +5,9 @@
 {% block content %}
 <p> vous avez ajouté l'auteur suivant : {{auteur.prenomAuteur}}, {{auteur.nomAuteur}}</p>
 <ul>
+    {% if auteur.ageAuteur %}
     <li>âge : {{auteur.ageAuteur}}</li>
+    {% endif %}
     <li><img src="/media/{{auteur.photoAuteur}}" height="300px"width="300px"></li><!--class="img-fluid"-->
 
 </ul>

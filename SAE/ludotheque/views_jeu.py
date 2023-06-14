@@ -22,22 +22,19 @@ def ajoutJeu_fiche(request):
 
 
 def traitementFichier(request):
-    fichierform = JeuFichierForm(request.FILES)
+    fichierform = JeuFichierForm(data=request.POST, files=request.FILES)
     if fichierform.is_valid():
         fichierform.save()
-        with open(f"/media/fichiers/{fichierform.fichier}", 'r') as f:
+        fich = models.JeuFichier.objects.last().fichier
+        with open(f"media/{fich}", 'r') as f:
             jeu = json.load(f)
-        jeu.split(',')
-        auteur = jeu[3].split(' ')
-        prenomauteur = auteur[0]
-        nomauteur = auteur[1]
-        idauteur = models.Auteur.objects.get(prenomAuteur=prenomauteur, nomAuteur=nomauteur).id
-        if not idauteur:
-            auteur = models.Auteur.objects.create(prenomAuteur= prenomauteur, nomAuteur=nomauteur, ageAuteur=None, photoAuteur="images/default.png")
-            models.Auteur.objects.add(auteur)
-            idauteur = auteur.id
-        nouveaujeu = models.Jeu.objects.create(titreJeu=jeu[0], anneeJeu=jeu[1], editeurJeu=jeu[2], categorieJeu=models.Cat.objects.get(nomCat=jeu[4]).id, auteurJeu=idauteur)
-        models.Jeu.objects.add(nouveaujeu)
+        jeu = jeu.split(' ') # 0:titre, 1:année, 2:editeur, 3:categorie, 4:prenom, 5:nom
+        if models.Auteur.objects.filter(prenomAuteur=jeu[4], nomAuteur=jeu[5]).exists():
+            auteur = models.Auteur.objects.get(prenomAuteur=jeu[4], nomAuteur=jeu[5])
+        else:
+            auteur = models.Auteur.objects.create(prenomAuteur=jeu[4], nomAuteur=jeu[5], ageAuteur=None,
+                                                  photoAuteur="images/default.png")
+        nouveaujeu = models.Jeu.objects.create(titreJeu=jeu[0], anneeJeu=jeu[1], editeurJeu=jeu[2], categorieJeu=models.Cat.objects.get(nomCat=jeu[3]), auteurJeu=auteur)
         return HttpResponseRedirect("/ludotheque/indexJeu/")
     else:
         return render(request, "ludotheque/jeux/ajoutJeu_fiche.html", {"form":fichierform})
