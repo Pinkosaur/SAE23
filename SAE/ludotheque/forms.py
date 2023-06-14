@@ -17,6 +17,12 @@ class JeuForm(ModelForm):
             'categorieJeu': _('Catégorie')
         }
 
+class JeuFichierForm(ModelForm):
+    class Meta:
+        model = models.JeuFichier
+        fields = ("fichier",)
+        labels = {'fichier':_('Fichier contenant les informations du jeu')}
+
 class CatForm(ModelForm):
     class Meta:
         model = models.Cat

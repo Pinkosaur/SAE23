@@ -12,6 +12,9 @@ urlpatterns = [
     path('updatetraitementJeu/<int:id>/', views_jeu.updatetraitementJeu),
     path('deleteJeu/<int:id>/', views_jeu.deleteJeu),
     path('indexJeu/', views_jeu.indexJeu),
+    path('ajoutJeu_fiche/', views_jeu.ajoutJeu_fiche),
+    path('traitementFichier/', views_jeu.traitementFichier),
+    path('aideFichier/', views_jeu.aideFichier),
 
     path('ajoutCat/', views_cat.ajoutCat),
     path('traitementCat', views_cat.traitementCat),

@@ -81,3 +81,6 @@ class Liste(models.Model):
     def __str__(self):
         chaine = f"{self.jeuListe}"
         return chaine
+
+class JeuFichier(models.Model):
+    fichier = models.FileField(upload_to='fiches/')
