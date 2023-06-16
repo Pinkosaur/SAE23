@@ -28,7 +28,7 @@ def traitementFichier(request):
         fich = models.JeuFichier.objects.last().fichier
         with open(f"media/{fich}", 'r') as f:
             jeu = json.load(f)
-        jeu = jeu.split(' ') # 0:titre, 1:année, 2:editeur, 3:categorie, 4:prenom, 5:nom
+        jeu = jeu.split(',') # 0:titre, 1:année, 2:editeur, 3:categorie, 4:prenom, 5:nom
         if models.Auteur.objects.filter(prenomAuteur=jeu[4], nomAuteur=jeu[5]).exists():
             auteur = models.Auteur.objects.get(prenomAuteur=jeu[4], nomAuteur=jeu[5])
         else:
