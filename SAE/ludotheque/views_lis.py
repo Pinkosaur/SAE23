@@ -17,7 +17,7 @@ def traitementListe(request, id):
         liste.joueurListe = joueur
         liste.joueur_id = id #bizarre
         liste.save()
-        return render(request, "ludotheque/listes/afficheListe.html", {"liste": liste, "id":id})
+        return render(request, "ludotheque/listes/afficheListe.html", {"liste": liste, "idjoueur":id})
     else:
         return render(request, "ludotheque/listes/afficheListe.html", {"form": form})
 
